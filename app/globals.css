@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020617;
+  --foreground: #f8fafc;
+  --color-surface-dim: #0c1324;
+  --color-surface-bright: #33394c;
+  --color-surface-glass: rgba(12, 19, 36, 0.6);
+  --color-primary: #3b82f6;
+  --color-primary-dim: #adc6ff;
+  --color-secondary: #10b981;
+  --color-secondary-dim: #4edea3;
+  --color-on-surface: #dce1fb;
+  --color-on-surface-variant: #c2c6d6;
+  --color-outline: rgba(220, 225, 251, 0.1);
+  --color-outline-active: rgba(220, 225, 251, 0.3);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-surface-dim: var(--color-surface-dim);
+  --color-surface-bright: var(--color-surface-bright);
+  --color-surface-glass: var(--color-surface-glass);
+  --color-primary: var(--color-primary);
+  --color-primary-dim: var(--color-primary-dim);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-dim: var(--color-secondary-dim);
+  --color-on-surface: var(--color-on-surface);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --color-outline: var(--color-outline);
+  --color-outline-active: var(--color-outline-active);
+  --font-geist: var(--font-geist-sans), sans-serif;
+  --font-inter: var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-on-surface);
+  font-family: var(--font-inter);
+  scroll-behavior: smooth;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-outline);
+  border-radius: 0.5rem;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-outline-active);
+  box-shadow: 0 15px 30px -10px rgba(59, 130, 246, 0.2);
+}
+
+.glass-panel-secondary:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-outline-active);
+  box-shadow: 0 15px 30px -10px rgba(16, 185, 129, 0.2);
+}
+
+.glass-navbar {
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-outline);
+}
+
+.glass-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-outline);
+  outline: none;
+  transition: all 0.5s ease;
+}
+
+.glass-input:focus {
+  border-bottom: 1px solid var(--color-secondary);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+  padding: 0.5rem;
 }

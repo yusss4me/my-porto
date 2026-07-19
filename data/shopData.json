@@ -1,0 +1,34 @@
+[
+  {
+    "id": "glass-navbar",
+    "componentName": "Glassmorphic Sticky Navbar",
+    "category": "Organisms",
+    "price": "$19.00",
+    "previewUrl": "#",
+    "downloadKey": "glass-navbar-v1"
+  },
+  {
+    "id": "vertical-dots",
+    "componentName": "Vertical Dot Scroll Navigation",
+    "category": "Molecules",
+    "price": "$9.00",
+    "previewUrl": "#",
+    "downloadKey": "vertical-dots-v1"
+  },
+  {
+    "id": "glow-card",
+    "componentName": "Interactive Outer Glow Project Card",
+    "category": "Molecules",
+    "price": "$12.00",
+    "previewUrl": "#",
+    "downloadKey": "glow-card-v1"
+  },
+  {
+    "id": "neural-input",
+    "componentName": "Neural Glassmorphic Form Input",
+    "category": "Atoms",
+    "price": "$5.00",
+    "previewUrl": "#",
+    "downloadKey": "neural-input-v1"
+  }
+]
