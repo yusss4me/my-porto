@@ -17,14 +17,14 @@ const tabs = [
 
 export default function StoreFilterTabs({ activeCategory }: StoreFilterTabsProps) {
   return (
-    <div className="flex flex-wrap gap-2 border-b border-white/10 pb-4 relative z-20">
+    <div className="flex flex-nowrap overflow-x-auto whitespace-nowrap pb-3 gap-2 border-b border-white/10 relative z-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] -mx-6 px-6 md:mx-0 md:px-0">
       {tabs.map((tab) => {
         const isActive = activeCategory === tab.id;
         return (
           <Link
             key={tab.id}
             href={tab.id === 'all' ? '/components-shop' : `/components-shop?category=${tab.id}`}
-            className={`relative px-4 py-2.5 text-[10px] font-mono tracking-wider transition-colors duration-300 rounded-full uppercase ${
+            className={`relative px-4 py-2.5 text-[10px] font-mono tracking-wider transition-colors duration-300 rounded-full uppercase shrink-0 ${
               isActive ? 'text-white font-bold' : 'text-[#c2c6d6] hover:text-white'
             }`}
           >

@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '@/components/atoms/Button';
-import Badge from '@/components/atoms/Badge';
 
 interface ProductData {
   id: string;
@@ -51,7 +50,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     badgeColorClasses = 'border-purple-500/30 bg-purple-500/10 text-purple-300';
     secondaryBtnText = 'Architecture';
     primaryBtnText = 'Buy Source';
-    primaryBtnVariant = 'blue'; // fallback or outline custom styling
+    primaryBtnVariant = 'blue';
   }
 
   // Format IDR Price
@@ -63,7 +62,9 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   const handleCheckout = () => {
     // Simulated Midtrans Trigger
-    alert(`[Midtrans Secure Checkout] Initiating transaction for: ${product.componentName} (${product.downloadKey}) - Price: ${formattedPrice}`);
+    alert(
+      `[Midtrans Secure Checkout] Initiating transaction for: ${product.componentName} (${product.downloadKey}) - Price: ${formattedPrice}`
+    );
   };
 
   return (
@@ -79,15 +80,12 @@ export default function ProductCard({ product }: ProductCardProps) {
       }}
       className={`flex flex-col p-6 rounded-lg bg-[#0c1324]/60 backdrop-blur-md border border-white/10 transition-colors duration-500 ${accentBorderColor} h-full`}
     >
-      {/* Category Badge & Price Header */}
-      <div className="flex justify-between items-start gap-4 mb-4">
+      {/* Category Badge Header */}
+      <div className="flex justify-between items-center mb-4">
         <span
           className={`px-2.5 py-0.5 text-[9px] tracking-widest font-mono border rounded uppercase ${badgeColorClasses}`}
         >
           {product.category}
-        </span>
-        <span className="font-mono text-sm font-bold text-white whitespace-nowrap">
-          {formattedPrice}
         </span>
       </div>
 
@@ -118,13 +116,23 @@ export default function ProductCard({ product }: ProductCardProps) {
         ))}
       </div>
 
-      {/* Action Buttons */}
-      <div className="flex gap-2.5 mt-auto pt-4 border-t border-white/5">
+      {/* Price Section - Placed logically above call to actions */}
+      <div className="mb-4 pt-4 border-t border-white/5 flex items-baseline justify-between">
+        <span className="font-mono text-[9px] text-[#c2c6d6]/50 uppercase tracking-wider">
+          Price
+        </span>
+        <span className="font-mono text-base font-extrabold text-white">
+          {formattedPrice}
+        </span>
+      </div>
+
+      {/* Action Buttons - Optimized for mobile/narrow viewports */}
+      <div className="flex flex-col sm:flex-row gap-2.5 w-full">
         <Button
           href={product.previewUrl}
           variant="shop-outline"
           size="sm"
-          className="flex-1 text-center font-mono text-[11px]"
+          className="flex-1 text-center font-mono text-[10px]"
         >
           {secondaryBtnText}
         </Button>
@@ -132,7 +140,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           onClick={handleCheckout}
           variant={primaryBtnVariant}
           size="sm"
-          className={`flex-1 font-mono text-[11px] ${
+          className={`flex-1 font-mono text-[10px] ${
             product.category === 'Fullstack & Dev Tools'
               ? 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.3)]'
               : ''
