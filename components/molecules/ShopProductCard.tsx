@@ -1,13 +1,31 @@
-import React from 'react';
+'use client';
 
-export default function ShopProductCard({ product }) {
+import React from 'react';
+import Button from '@/components/atoms/Button';
+
+interface ProductData {
+  componentName: string;
+  category: string;
+  price: string;
+  previewUrl: string;
+  downloadKey: string;
+}
+
+interface ShopProductCardProps {
+  product: ProductData;
+}
+
+export default function ShopProductCard({ product }: ShopProductCardProps) {
   const isOrganism = product.category === 'Organisms';
-  const isMolecule = product.category === 'Molecules';
   
   // Decide variant accent
-  const variant = isOrganism ? 'green' : 'blue';
-  const accentColor = isOrganism ? 'hover:border-[#10b981] hover:shadow-[#10b981]/20' : 'hover:border-[#3b82f6] hover:shadow-[#3b82f6]/20';
-  const labelColor = isOrganism ? 'text-[#4edea3] bg-[#10b981]/10 border-[#10b981]/30' : 'text-[#adc6ff] bg-[#3b82f6]/10 border-[#3b82f6]/30';
+  const accentColor = isOrganism 
+    ? 'hover:border-[#10b981] hover:shadow-[#10b981]/20' 
+    : 'hover:border-[#3b82f6] hover:shadow-[#3b82f6]/20';
+    
+  const labelColor = isOrganism 
+    ? 'text-[#4edea3] bg-[#10b981]/10 border-[#10b981]/30' 
+    : 'text-[#adc6ff] bg-[#3b82f6]/10 border-[#3b82f6]/30';
 
   return (
     <div className={`flex flex-col p-6 rounded-lg bg-[#0c1324]/60 backdrop-blur-md border border-white/10 transition-all duration-500 hover:-translate-y-1 hover:border-opacity-30 shadow-lg ${accentColor}`}>
@@ -22,18 +40,22 @@ export default function ShopProductCard({ product }) {
         High-fidelity fully responsive component built in strict compliance with the design tokens.
       </p>
       <div className="flex gap-3 mt-auto">
-        <a
+        <Button
           href={product.previewUrl}
-          className="flex-1 text-center py-2 px-3 rounded font-mono text-xs border border-white/10 hover:border-white/30 text-white transition-colors"
+          variant="shop-outline"
+          size="sm"
+          className="flex-1 text-center"
         >
           Live Preview
-        </a>
-        <button
+        </Button>
+        <Button
           onClick={() => alert(`Buying token: ${product.downloadKey}`)}
-          className="flex-1 py-2 px-3 rounded font-mono text-xs bg-[#3b82f6] text-white hover:bg-blue-600 transition-colors"
+          variant="blue"
+          size="sm"
+          className="flex-1"
         >
           Buy Now
-        </button>
+        </Button>
       </div>
     </div>
   );

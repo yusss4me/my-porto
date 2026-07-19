@@ -1,7 +1,7 @@
 {
   "profile": {
     "name": "Ardi Yustiar",
-    "title": "Frontend Developer & AI Enthusiast",
+    "title": "Fullstack Developer & AI Enthusiast",
     "subtitle": "Engineering high-performance digital experiences.",
     "avatar": "/avatar.jpg",
     "bio": "Bridging the gap between complex algorithms and intuitive user interfaces.",
@@ -9,18 +9,36 @@
     "aiAgentsDeployed": 12,
     "status": "Available for Collaboration",
     "socials": {
-      "github": "https://github.com",
-      "linkedin": "https://linkedin.com",
+      "github": "https://github.com/yusss4me",
+      "linkedin": "https://linkedin.com/in/ardi-yustiar-8250ba240/",
       "twitter": "https://twitter.com"
     }
   },
   "techStack": [
-    { "name": "Next.js", "category": "Frontend" },
-    { "name": "React", "category": "Frontend" },
-    { "name": "Tailwind CSS", "category": "Frontend" },
-    { "name": "Python", "category": "AI/ML" },
-    { "name": "Machine Learning", "category": "AI/ML" },
-    { "name": "PyTorch", "category": "AI/ML" }
+    {
+      "name": "Next.js",
+      "category": "Frontend"
+    },
+    {
+      "name": "React",
+      "category": "Frontend"
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "Frontend"
+    },
+    {
+      "name": "Python",
+      "category": "AI/ML"
+    },
+    {
+      "name": "Machine Learning",
+      "category": "AI/ML"
+    },
+    {
+      "name": "PyTorch",
+      "category": "AI/ML"
+    }
   ],
   "projects": [
     {
@@ -28,7 +46,10 @@
       "title": "Web Portal",
       "description": "A next-generation enterprise gateway with real-time data streaming and AI-driven insights.",
       "category": "Web Development",
-      "tags": ["TypeScript", "Websockets"],
+      "tags": [
+        "TypeScript",
+        "Websockets"
+      ],
       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop"
     },
     {
@@ -36,7 +57,10 @@
       "title": "AI Classifier",
       "description": "Automated image recognition system built on custom neural architectures with 99.4% accuracy.",
       "category": "Artificial Intelligence",
-      "tags": ["Python", "PyTorch"],
+      "tags": [
+        "Python",
+        "PyTorch"
+      ],
       "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop"
     },
     {
@@ -44,7 +68,10 @@
       "title": "Music Player",
       "description": "Minimalist audio application with spatial sound processing and dynamic glassmorphic UI.",
       "category": "Web Development",
-      "tags": ["Next.js", "WebAudioAPI"],
+      "tags": [
+        "Next.js",
+        "WebAudioAPI"
+      ],
       "image": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop"
     }
   ],

@@ -1,34 +1,79 @@
 [
   {
-    "id": "glass-navbar",
-    "componentName": "Glassmorphic Sticky Navbar",
-    "category": "Organisms",
-    "price": "$19.00",
-    "previewUrl": "#",
-    "downloadKey": "glass-navbar-v1"
+    "id": "figma-ui-kit",
+    "componentName": "Figma Glassmorphic Dashboard Kit",
+    "category": "UI/UX & Frontend Assets",
+    "subCategory": "Figma Component UI Kit",
+    "price": 249000,
+    "previewUrl": "https://figma.com",
+    "downloadKey": "figma-glass-v1",
+    "techStack": ["Figma", "Design System", "Auto Layout"],
+    "description": "Premium glassmorphism Figma UI kit containing 50+ pre-built components, local variables, and responsive configurations."
   },
   {
-    "id": "vertical-dots",
-    "componentName": "Vertical Dot Scroll Navigation",
-    "category": "Molecules",
-    "price": "$9.00",
-    "previewUrl": "#",
-    "downloadKey": "vertical-dots-v1"
+    "id": "nextjs-template",
+    "componentName": "Next.js 16 SaaS Boilerplate",
+    "category": "UI/UX & Frontend Assets",
+    "subCategory": "Next.js Premium Templates",
+    "price": 499000,
+    "previewUrl": "https://nextjs.org",
+    "downloadKey": "next16-saas-v1",
+    "techStack": ["Next.js", "Tailwind CSS", "TypeScript"],
+    "description": "Production-ready SaaS template featuring parallel routing, server action handlers, and pre-integrated Stripe/Midtrans billing."
   },
   {
-    "id": "glow-card",
-    "componentName": "Interactive Outer Glow Project Card",
-    "category": "Molecules",
-    "price": "$12.00",
+    "id": "framer-presets",
+    "componentName": "Interactive Micro-Animation Presets",
+    "category": "UI/UX & Frontend Assets",
+    "subCategory": "Tailwind & Framer Motion Presets",
+    "price": 129000,
     "previewUrl": "#",
-    "downloadKey": "glow-card-v1"
+    "downloadKey": "framer-presets-v1",
+    "techStack": ["Framer Motion", "Tailwind CSS", "React"],
+    "description": "Ready-to-use premium hover animations, scroll reveal effects, and physics-based transitions for modern interfaces."
   },
   {
-    "id": "neural-input",
-    "componentName": "Neural Glassmorphic Form Input",
-    "category": "Atoms",
-    "price": "$5.00",
+    "id": "pkl-model",
+    "componentName": "Customer Churn Prediction Model",
+    "category": "AI & Data Science",
+    "subCategory": "Trained Model Binary (.pkl/.pt)",
+    "price": 899000,
+    "previewUrl": "https://github.com",
+    "downloadKey": "churn-model-v1",
+    "techStack": ["Python", "Scikit-Learn", "FastAPI"],
+    "description": "Pre-trained XGBoost classifier with 94.2% accuracy for customer churn prediction. Includes deployment script."
+  },
+  {
+    "id": "colab-notebook",
+    "componentName": "Deep Learning Object Detection Pipeline",
+    "category": "AI & Data Science",
+    "subCategory": "Premium Google Colab Notebooks (.ipynb)",
+    "price": 189000,
+    "previewUrl": "https://colab.research.google.com",
+    "downloadKey": "dl-object-v1",
+    "techStack": ["PyTorch", "Google Colab", "YOLOv8"],
+    "description": "Complete step-by-step notebook for training and evaluating custom object detection models on custom datasets."
+  },
+  {
+    "id": "streamlit-boilerplate",
+    "componentName": "Real-time Analytics Dashboard",
+    "category": "Fullstack & Dev Tools",
+    "subCategory": "Streamlit Custom Boilerplates",
+    "price": 329000,
+    "previewUrl": "https://streamlit.io",
+    "downloadKey": "streamlit-anal-v1",
+    "techStack": ["Streamlit", "Python", "Pandas"],
+    "description": "Customized Streamlit template featuring state management, dynamic custom CSS styling, and real-time WebSocket charts."
+  },
+  {
+    "id": "python-automation",
+    "componentName": "Multi-Source Web Scraper & Parser",
+    "category": "Fullstack & Dev Tools",
+    "subCategory": "Python Automation Scripts",
+    "price": 149000,
     "previewUrl": "#",
-    "downloadKey": "neural-input-v1"
+    "downloadKey": "python-scraper-v1",
+    "techStack": ["Python", "Playwright", "BeautifulSoup"],
+    "description": "Asynchronous high-performance web scraper with automatic proxy rotation, anti-bot bypass, and CSV/JSON exporter."
   }
 ]

@@ -1,6 +1,13 @@
+'use client';
+
 import React from 'react';
 
-export default function Badge({ children, variant = 'blue' }) {
+interface BadgeProps {
+  children: React.ReactNode;
+  variant?: 'blue' | 'green';
+}
+
+export default function Badge({ children, variant = 'blue' }: BadgeProps) {
   const colorClasses =
     variant === 'green'
       ? 'border-[#10b981] bg-[#10b981]/10 text-[#4edea3]'
