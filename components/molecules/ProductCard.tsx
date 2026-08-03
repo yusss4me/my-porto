@@ -116,7 +116,8 @@ export default function ProductCard({ product }: ProductCardProps) {
         ))}
       </div>
 
-      {/* Price Section - Placed logically above call to actions */}
+      {/* Price Section - Commented out per user request (Purchase feature on hold / stay tuned) */}
+      {/* 
       <div className="mb-4 pt-4 border-t border-white/5 flex items-baseline justify-between">
         <span className="font-mono text-[9px] text-[#c2c6d6]/50 uppercase tracking-wider">
           Price
@@ -125,29 +126,29 @@ export default function ProductCard({ product }: ProductCardProps) {
           {formattedPrice}
         </span>
       </div>
+      */}
 
-      {/* Action Buttons - Optimized for mobile/narrow viewports */}
-      <div className="flex flex-col sm:flex-row gap-2.5 w-full">
+      {/* Action Buttons - Live Preview / Details as primary action */}
+      <div className="flex gap-2.5 w-full pt-4 border-t border-white/5">
         <Button
           href={product.previewUrl}
           variant="shop-outline"
           size="sm"
-          className="flex-1 text-center font-mono text-[10px]"
+          className="w-full text-center font-mono text-[10px]"
         >
           {secondaryBtnText}
         </Button>
+        {/* 
+        Purchase button commented out per user request
         <Button
           onClick={handleCheckout}
           variant={primaryBtnVariant}
           size="sm"
-          className={`flex-1 font-mono text-[10px] ${
-            product.category === 'Fullstack & Dev Tools'
-              ? 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.3)]'
-              : ''
-          }`}
+          className="flex-1 font-mono text-[10px]"
         >
           {primaryBtnText}
         </Button>
+        */}
       </div>
     </motion.div>
   );

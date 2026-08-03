@@ -13,7 +13,7 @@ export default function Footer() {
   };
 
   return (
-    <section id="contact" className="py-20 border-t border-white/5 text-center">
+    <section id="contact" className="py-12 md:py-16 border-t border-white/5 text-center">
       <h2 className="font-geist text-4xl md:text-6xl font-extrabold text-white mb-6">
         Let&apos;s build the <span className="italic text-[#3b82f6]">future</span> together.
       </h2>
@@ -39,7 +39,7 @@ export default function Footer() {
         </Button>
       </form>
 
-      <footer className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-[#c2c6d6]">
+      <footer className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-[#c2c6d6]">
         <div>
           © {new Date().getFullYear()} {profile.name}. Engineered for the future.
         </div>

@@ -1,15 +1,17 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import portfolioData from '@/data/portfolioData.json';
 import ProjectCard from '@/components/molecules/ProjectCard';
+import Button from '@/components/atoms/Button';
 
 export default function ProjectGrid() {
   const { projects } = portfolioData;
 
   return (
-    <section id="projects" className="py-20 border-t border-white/5">
+    <section id="projects" className="py-12 md:py-16 border-t border-white/5">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
         <div>
           <span className="font-mono text-xs text-[#3b82f6] tracking-widest uppercase">Selected Work</span>
@@ -53,6 +55,13 @@ export default function ProjectGrid() {
           </motion.div>
         ))}
       </motion.div>
+
+      {/* CTA link to full Projects page */}
+      <div className="mt-12 text-center">
+        <Button href="/projects" variant="outline" size="md" className="font-mono text-xs tracking-wider">
+          Lihat Semua Project & Assets →
+        </Button>
+      </div>
     </section>
   );
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductCard from '../molecules/ProductCard';
-import StoreNavigation from '../molecules/StoreNavigation';
 import shopData from '@/data/shopData.json';
 
 interface StoreCatalogProps {
@@ -11,12 +10,11 @@ export default async function StoreCatalog({ category }: StoreCatalogProps) {
   // Simulate network latency to demonstrate Next.js Streaming and Skeleton fallback loading state
   await new Promise((resolve) => setTimeout(resolve, 800));
 
-  // Dynamically calculate category item counts
-  const counts = {
-    all: shopData.length,
-    'ui-ux': shopData.filter((p) => p.category === 'UI/UX & Frontend Assets').length,
-    ai: shopData.filter((p) => p.category === 'AI & Data Science').length,
-    fullstack: shopData.filter((p) => p.category === 'Fullstack & Dev Tools').length,
+  const categoryLabels: Record<string, string> = {
+    all: 'All Products & Assets',
+    'ui-ux': 'UI/UX & Frontend Assets',
+    ai: 'AI & Data Science',
+    fullstack: 'Fullstack & Dev Tools',
   };
 
   // Server-side filtering logic
@@ -30,30 +28,36 @@ export default async function StoreCatalog({ category }: StoreCatalogProps) {
         })
       : shopData;
 
-  return (
-    <div className="pb-24 lg:pb-0">
-      {/* 2-Column Responsive Layout: Sidebar on Desktop, Bottom bar on Mobile */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
-        {/* Navigation Sidebar/Bottom Bar Conductor */}
-        <div className="lg:col-span-1">
-          <StoreNavigation activeCategory={category || 'all'} counts={counts} />
-        </div>
+  const currentLabel = categoryLabels[category || 'all'] || 'All Products & Assets';
 
-        {/* Catalog Cards Grid */}
-        <div className="lg:col-span-3">
-          {filteredProducts.length === 0 ? (
-            <div className="text-center py-20 border border-white/5 rounded-lg bg-[#0c1324]/40 font-mono text-sm text-[#c2c6d6]">
-              No products found under this category.
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {filteredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          )}
+  return (
+    <div className="pb-24 lg:pb-12 w-full">
+      {/* Active Filter Header Indicator */}
+      <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
+        <div className="flex items-center gap-3">
+          <span className="w-2 h-2 rounded-full bg-[#3b82f6] animate-pulse" />
+          <span className="font-mono text-xs text-[#c2c6d6] uppercase tracking-wider">
+            Active Filter: <span className="text-white font-bold">{currentLabel}</span>
+          </span>
         </div>
+        <span className="font-mono text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#adc6ff]">
+          {filteredProducts.length} {filteredProducts.length === 1 ? 'item' : 'items'}
+        </span>
       </div>
+
+      {/* Full-Width Catalog Cards Grid (3 Columns on Desktop) */}
+      {filteredProducts.length === 0 ? (
+        <div className="text-center py-20 border border-white/5 rounded-xl bg-[#0c1324]/40 font-mono text-sm text-[#c2c6d6]">
+          No products found under this category.
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
+

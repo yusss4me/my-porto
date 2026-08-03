@@ -6,7 +6,7 @@ export default function LabSection() {
   const { lab } = portfolioData;
 
   return (
-    <section id="lab" className="py-20 border-t border-white/5">
+    <section id="lab" className="py-12 md:py-16 border-t border-white/5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <span className="font-mono text-xs text-[#4edea3] tracking-widest uppercase">Research & Development</span>

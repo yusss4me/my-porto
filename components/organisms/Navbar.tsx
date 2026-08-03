@@ -11,8 +11,7 @@ export default function Navbar() {
 
   const navigationItems = [
     { name: 'PORTFOLIO', href: '/' },
-    { name: 'TECH STORE', href: '/shop' },
-    { name: 'COMPONENTS', href: '/components-shop' },
+    { name: 'PROJECTS', href: '/projects' },
   ];
 
   return (
@@ -38,7 +37,7 @@ export default function Navbar() {
         </Link>
 
         {/* Global Navigation Links */}
-        <nav className="flex items-center gap-1 md:gap-4 font-mono text-xs tracking-wider">
+        <nav className="hidden md:flex items-center gap-1 md:gap-4 font-mono text-xs tracking-wider">
           {navigationItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -63,14 +62,14 @@ export default function Navbar() {
         </nav>
 
         {/* Action Button */}
-        <div className="hidden sm:block">
+        {/* <div className="hidden sm:block">
           <Link
             href="/#contact"
             className="relative px-4 py-2 text-xs font-mono tracking-wider rounded-lg border border-[#3b82f6]/30 bg-[#3b82f6]/10 text-white hover:bg-[#3b82f6]/20 hover:border-[#3b82f6] transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.1)] block"
           >
             CONNECT_
           </Link>
-        </div>
+        </div> */}
       </div>
     </header>
   );

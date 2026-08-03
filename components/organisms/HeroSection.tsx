@@ -10,7 +10,7 @@ export default function HeroSection() {
   const { profile, techStack } = portfolioData;
 
   return (
-    <section id="home" className="min-h-[80vh] flex flex-col justify-center py-16">
+    <section id="home" className="py-12 md:py-16 flex flex-col justify-center">
       <div className="inline-flex mb-6">
         <Badge variant="green">{profile.status}</Badge>
       </div>
