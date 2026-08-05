@@ -12,6 +12,8 @@ export default function Navbar() {
   const navigationItems = [
     { name: 'PORTFOLIO', href: '/' },
     { name: 'PROJECTS', href: '/projects' },
+    { name: 'ABOUT', href: '/about' },
+    { name: 'CONTACT', href: '/contact' },
   ];
 
   return (
@@ -41,8 +43,13 @@ export default function Navbar() {
           {navigationItems.map((item) => {
             const isActive = pathname === item.href;
             return (
-              <Link key={item.href} href={item.href} className="relative px-3 py-2 transition-colors">
-                <span className={`relative z-10 transition-colors duration-350 ${
+              <Link
+                key={item.href}
+                href={item.href}
+                className="relative px-3 py-2 transition-colors"
+                aria-current={isActive ? 'page' : undefined}
+              >
+                <span className={`relative z-10 transition-colors duration-300 ${
                   isActive ? 'text-white font-bold' : 'text-[#c2c6d6] hover:text-white'
                 }`}>
                   {item.name}
@@ -52,7 +59,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="activeGlobalNav"
-                    className="absolute inset-0 bg-white/5 rounded-full border border-white/10 shadow-[0_0_12px_rgba(59,130,246,0.15)]"
+                    className="absolute inset-0 bg-white/10 rounded-full border border-white/20 shadow-[0_0_12px_rgba(59,130,246,0.25)]"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}

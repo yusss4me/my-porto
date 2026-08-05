@@ -4,6 +4,7 @@ import React, { Suspense } from 'react';
 import Navbar from '@/components/organisms/Navbar';
 import Sidebar from '@/components/organisms/Sidebar';
 import MobileBottomNav from '@/components/organisms/MobileBottomNav';
+import ScrollToTop from '@/components/atoms/ScrollToTop';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -12,6 +13,8 @@ interface MainLayoutProps {
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
     <div className="relative bg-[#020617] text-[#dce1fb] overflow-hidden min-h-screen">
+      <ScrollToTop />
+
       {/* Stars/Dots background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
@@ -33,4 +36,5 @@ export default function MainLayout({ children }: MainLayoutProps) {
     </div>
   );
 }
+
 
