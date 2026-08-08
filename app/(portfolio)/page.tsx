@@ -11,7 +11,6 @@ export default function PortfolioPage() {
       <HeroSection />
       <ProjectGrid />
       <LabSection />
-      <CTASection />
       <Footer />
     </>
   );

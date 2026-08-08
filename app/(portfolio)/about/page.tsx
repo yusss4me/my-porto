@@ -15,21 +15,18 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
-      {/* 1. Hero Section */}
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 space-y-24">
+      {/* Section 1: Overview / Hero */}
       <AboutHero hero={aboutData.hero} stats={aboutData.stats} />
 
-      {/* 2. Journey Section */}
+      {/* Section 2: The Journey Timeline */}
       <AboutJourney journey={aboutData.journey} />
 
-      {/* 3. Skills Matrix Section */}
+      {/* Section 3: Tech Stack Grid */}
       <AboutSkills skills={aboutData.skills} />
 
-      {/* 4. Beyond Code Bento Grid */}
+      {/* Section 4: Beyond Code Bento Grid */}
       <AboutBento bento={aboutData.bento} />
-
-      {/* 5. Bottom CTA Banner */}
-      <CTASection />
-    </main>
+    </div>
   );
 }

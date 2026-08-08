@@ -10,7 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const navigationItems = [
-    { name: 'PORTFOLIO', href: '/' },
+    { name: 'HOME', href: '/' },
     { name: 'PROJECTS', href: '/projects' },
     { name: 'ABOUT', href: '/about' },
     { name: 'CONTACT', href: '/contact' },
@@ -21,17 +21,15 @@ export default function Navbar() {
       <div className="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
         {/* Brand Logo & Name */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="relative w-8 h-8 flex items-center justify-center rounded-lg bg-gradient-to-tr from-[#3b82f6] to-[#10b981] p-[1px] transition-transform duration-300 group-hover:scale-105">
-            <div className="w-full h-full bg-[#020617] rounded-[7px] flex items-center justify-center overflow-hidden">
-              <Image
-                src="/logo/logo.png"
-                alt="ARDYUSTIAR Logo"
-                width={24}
-                height={24}
-                className="w-6 h-6 object-contain"
-                priority
-              />
-            </div>
+          <div className="relative w-9 h-9 rounded-xl overflow-hidden border border-blue-500/30 shadow-[0_0_12px_rgba(59,130,246,0.3)] transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="/logo/logo.png"
+              alt="ARDI YUSTIAR Logo"
+              width={36}
+              height={36}
+              className="w-full h-full object-cover"
+              priority
+            />
           </div>
           <span className="font-geist font-extrabold text-white tracking-tight text-xl bg-gradient-to-r from-white to-[#c2c6d6] bg-clip-text text-transparent group-hover:text-[#3b82f6] transition-colors duration-300">
             ARDI YUSTIAR

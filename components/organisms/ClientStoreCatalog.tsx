@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Search, ChevronDown, Sparkles } from 'lucide-react';
+import { Search, ChevronDown, X } from 'lucide-react';
 import ProductCard, { ProductData } from '../molecules/ProductCard';
 import CTASection from '../molecules/CTASection';
 import shopData from '@/data/shopData.json';
@@ -43,11 +43,14 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
       setActiveFilter('ALL');
     }
 
-    // 2. Focus/open search if triggered from sidebar search button
-    if (isSearchOpen && !searchQuery) {
-      // Keep default open search
+    // 2. Sync search query from URL parameter if present (e.g. ?q=... or ?search=...)
+    const qParam = searchParams.get('q') || (searchParams.get('search') !== 'open' ? searchParams.get('search') : null);
+    if (qParam) {
+      setSearchQuery(qParam);
+    } else {
+      setSearchQuery('');
     }
-  }, [category, isSearchOpen]);
+  }, [category, isSearchOpen, searchParams]);
 
   // Handle filter selection and sync URL query parameters
   const handleFilterClick = (filterId: string) => {
@@ -62,6 +65,16 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
       params.delete('category');
     }
 
+    startTransition(() => {
+      router.push(`/projects?${params.toString()}`, { scroll: false });
+    });
+  };
+
+  const clearSearchQuery = () => {
+    setSearchQuery('');
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete('q');
+    params.delete('search');
     startTransition(() => {
       router.push(`/projects?${params.toString()}`, { scroll: false });
     });
@@ -113,48 +126,36 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
           </p>
         </div>
 
-        {/* Search & Filters Container (Flex Space Between) */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-4 border-t border-white/5">
-          {/* Filter Pills (Left/Bottom) */}
-          <div className="flex flex-wrap items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-            {FILTER_PILLS.map((pill) => {
-              const isActive = activeFilter === pill.id;
-              return (
+        {/* Active Search & Category Badge Indicator */}
+        {(searchQuery || activeFilter !== 'ALL') && (
+          <div className="flex flex-wrap items-center gap-2 pt-2">
+            <span className="font-mono text-xs text-slate-400">Filtering by:</span>
+            {activeFilter !== 'ALL' && (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs">
+                Category: {activeFilter}
                 <button
-                  key={pill.id}
-                  onClick={() => handleFilterClick(pill.id)}
-                  className={`px-4 py-2 rounded-full font-mono text-xs tracking-wider transition-all duration-300 ${
-                    isActive
-                      ? 'bg-[#182030] text-white border border-white/20 shadow-[0_0_15px_rgba(59,130,246,0.25)]'
-                      : 'bg-[#121620]/60 text-slate-400 border border-white/10 hover:text-white hover:border-white/20'
-                  }`}
+                  type="button"
+                  onClick={() => handleFilterClick('ALL')}
+                  className="hover:text-white transition-colors"
                 >
-                  {pill.label}
+                  <X className="w-3 h-3" />
                 </button>
-              );
-            })}
-          </div>
-
-          {/* Search Bar (Right Side) */}
-          <div className="relative w-full md:w-72 lg:w-80">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search parameters..."
-              className="w-full bg-[#121620] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-white/30 transition-all font-mono shadow-inner"
-            />
+              </span>
+            )}
             {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-400 hover:text-white"
-              >
-                CLEAR
-              </button>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs">
+                Search: &quot;{searchQuery}&quot;
+                <button
+                  type="button"
+                  onClick={clearSearchQuery}
+                  className="hover:text-white transition-colors"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </span>
             )}
           </div>
-        </div>
+        )}
       </div>
 
       {/* 2. Project Grid Layout */}

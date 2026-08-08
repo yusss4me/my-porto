@@ -81,7 +81,7 @@ export const aboutData: AboutData = {
   ],
   skills: [
     {
-      category: "Frontend Eng.",
+      category: "Frontend Engineering",
       skills: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
     },
     {
@@ -89,8 +89,8 @@ export const aboutData: AboutData = {
       skills: ["Python", "Machine Learning", "Neural Networks", "PyTorch/TensorFlow"],
     },
     {
-      category: "Workflow & Tools",
-      skills: ["Git / GitHub", "VS Code", "Google Colab", "Figma"],
+      category: "Workflow & Utilities",
+      skills: ["Git/GitHub", "VS Code", "Google Colab", "Figma"],
     },
   ],
   bento: {
@@ -104,9 +104,9 @@ export const aboutData: AboutData = {
       description: "Exploring sports, analyzing tech trends, and finding rhythm in everyday chaos.",
     },
     currentFocus: {
-      tag: "Full-Stack AI Apps",
-      title: "Full-Stack AI Apps",
-      description: "Currently learning & building full-stack AI integrations.",
+      tag: "Live Status",
+      title: "Current Focus",
+      description: "Full-Stack AI Apps — Building intelligent interfaces and neural network-backed tools.",
     },
   },
 };

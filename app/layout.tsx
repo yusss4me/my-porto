@@ -31,6 +31,11 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Ardi Yustiar | Portfolio & AI Engine showcase",
   description: "Senior Fullstack Engineer and AI Specialist portfolio built with Next.js 16 and glassmorphic design system.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
