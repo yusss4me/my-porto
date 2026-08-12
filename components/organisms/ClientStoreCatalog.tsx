@@ -4,7 +4,6 @@ import React, { useState, useEffect, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Search, ChevronDown, X } from 'lucide-react';
 import ProductCard, { ProductData } from '../molecules/ProductCard';
-import CTASection from '../molecules/CTASection';
 import shopData from '@/data/shopData.json';
 
 interface ClientStoreCatalogProps {
@@ -199,8 +198,6 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
         </div>
       )}
 
-      {/* 4. Bottom Call-to-Action Banner Section */}
-      <CTASection />
     </div>
   );
 }

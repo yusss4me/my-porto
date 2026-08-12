@@ -2,10 +2,9 @@ import React from "react";
 import { Metadata } from "next";
 import { aboutData } from "@/data/about";
 import { AboutHero } from "@/components/molecules/AboutHero";
-import { AboutJourney } from "@/components/molecules/AboutJourney";
-import { AboutSkills } from "@/components/molecules/AboutSkills";
-import { AboutBento } from "@/components/molecules/AboutBento";
-import CTASection from "@/components/molecules/CTASection";
+import { MyJourney } from "@/components/about/MyJourney";
+import { TechEcosystem } from "@/components/about/TechEcosystem";
+import { BeyondCode } from "@/components/about/BeyondCode";
 
 export const metadata: Metadata = {
   title: "About | Ardi Yustiar",
@@ -20,13 +19,13 @@ export default function AboutPage() {
       <AboutHero hero={aboutData.hero} stats={aboutData.stats} />
 
       {/* Section 2: The Journey Timeline */}
-      <AboutJourney journey={aboutData.journey} />
+      <MyJourney />
 
-      {/* Section 3: Tech Stack Grid */}
-      <AboutSkills skills={aboutData.skills} />
+      {/* Section 3: Tech Ecosystem Section */}
+      <TechEcosystem />
 
-      {/* Section 4: Beyond Code Bento Grid */}
-      <AboutBento bento={aboutData.bento} />
+      {/* Section 4: Beyond Code Cyber Terminal Section */}
+      <BeyondCode />
     </div>
   );
 }
