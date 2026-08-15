@@ -89,7 +89,7 @@ export const aboutData: AboutData = {
   stats: [
     { value: "10+", label: "PROJECTS SHIPPED" },
     { value: "2+", label: "YEARS CODING" },
-    { value: "NEXT.JS & PYTHON", label: "CORE STACK" },
+    { value: "JAVASCRIPT & PYTHON", label: "CORE STACK" },
   ],
   journey: [
     {

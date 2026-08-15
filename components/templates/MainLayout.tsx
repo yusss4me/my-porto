@@ -5,6 +5,8 @@ import Navbar from '@/components/organisms/Navbar';
 import Sidebar from '@/components/organisms/Sidebar';
 import MobileBottomNav from '@/components/organisms/MobileBottomNav';
 import ScrollToTop from '@/components/atoms/ScrollToTop';
+import Copyright from '@/components/molecules/copyright';
+
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -28,10 +30,12 @@ export default function MainLayout({ children }: MainLayoutProps) {
       </Suspense>
 
       {/* Safe padding on mobile (pr-16) to prevent overlap with the right-aligned sidebar */}
-      <main className="max-w-6xl mx-auto pl-24 pr-16 md:px-16 pt-24 pb-12 w-full">
+      <main className="max-w-6xl mx-auto pl-24 pr-16 md:px-16 pt-24 w-full">
         {children}
+      <Copyright />
       </main>
 
+      
       <MobileBottomNav />
     </div>
   );

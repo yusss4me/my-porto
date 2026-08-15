@@ -2,12 +2,11 @@
 
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import portfolioData from '@/data/portfolioData.json';
 import { footerData } from '@/data/footerData';
 import Button from '@/components/atoms/Button';
 
+
 export default function Footer() {
-  const { profile } = portfolioData;
   const pathname = usePathname();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -18,7 +17,7 @@ export default function Footer() {
   const isContactPage = pathname === '/contact';
 
   return (
-    <footer className="py-12 md:py-16 border-t border-white/5 text-center">
+    <footer className="py-24 lg:py-2 border-t border-white/5 text-center">
       {!isContactPage && (
         <div id="contact" className="mb-12">
           <h2 className="font-geist text-4xl md:text-6xl font-extrabold text-white mb-6">
@@ -54,17 +53,7 @@ export default function Footer() {
         </div>
       )}
 
-      {/* Global Unified Copyright & Social Links */}
-      <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-[#c2c6d6]">
-        <div>
-          © {new Date().getFullYear()} {profile.name}. {footerData.copyrightSuffix}
-        </div>
-        <div className="flex gap-6">
-          <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Github</a>
-          <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
-          <a href={profile.socials.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Twitter</a>
-        </div>
-      </div>
+      
     </footer>
   );
 }

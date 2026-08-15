@@ -1,10 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { aboutData } from "@/data/about";
-import { AboutHero } from "@/components/molecules/AboutHero";
-import { MyJourney } from "@/components/about/MyJourney";
-import { TechEcosystem } from "@/components/about/TechEcosystem";
-import { BeyondCode } from "@/components/about/BeyondCode";
+import { AboutHero, MyJourney, TechEcosystem, BeyondCode } from "@/components/organisms";
 
 export const metadata: Metadata = {
   title: "About | Ardi Yustiar",

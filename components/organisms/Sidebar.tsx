@@ -15,11 +15,13 @@ import {
 } from '@/data/navigationData';
 import { SidebarLogo } from '@/components/atoms/SidebarLogo';
 import { SidebarNavItem } from '@/components/atoms/SidebarNavItem';
-import { SearchPopover } from '@/components/molecules/SearchPopover';
-import { StatusDiagnosticsPopover } from '@/components/molecules/StatusDiagnosticsPopover';
-import { DirectChannelsPopover } from '@/components/molecules/DirectChannelsPopover';
-import { QuickTransmitPopover } from '@/components/molecules/QuickTransmitPopover';
-import { ProtocolFaqPopover } from '@/components/molecules/ProtocolFaqPopover';
+import {
+  SearchPopover,
+  StatusDiagnosticsPopover,
+  DirectChannelsPopover,
+  QuickTransmitPopover,
+  ProtocolFaqPopover,
+} from '@/components/organisms';
 
 
 export default function Sidebar() {
@@ -88,7 +90,7 @@ export default function Sidebar() {
     };
   }, [isSearchOpen, activeControlPopover]);
 
-  // Scroll Spy Effect
+  // Scroll Spy Effect & Projects Category Active Section
   useEffect(() => {
     if (isLandingPage || isAboutPage || isContactPage) {
       const currentSections = isLandingPage
@@ -116,13 +118,8 @@ export default function Sidebar() {
     } else if (isProjectsPage) {
       const currentCategory = searchParams.get('category');
       const isSearch = searchParams.get('search') || searchParams.get('q');
-      if (isSearch !== null) {
-        setActiveSection('search');
-      } else if (!currentCategory) {
-        setActiveSection('all');
-      } else {
-        setActiveSection(currentCategory);
-      }
+      const targetSection = isSearch !== null ? 'search' : !currentCategory ? 'all' : currentCategory;
+      setActiveSection(targetSection);
     }
   }, [pathname, searchParams, isLandingPage, isAboutPage, isContactPage, isProjectsPage]);
 

@@ -4,6 +4,8 @@ import React, { useState, useEffect, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Search, ChevronDown, X } from 'lucide-react';
 import ProductCard, { ProductData } from '../molecules/ProductCard';
+import ProjectDemoModal from './ProjectDemoModal';
+import SystemSpecsModal from './SystemSpecsModal';
 import shopData from '@/data/shopData.json';
 
 interface ClientStoreCatalogProps {
@@ -24,32 +26,39 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
   const searchParams = useSearchParams();
   const [, startTransition] = useTransition();
 
-  const [activeFilter, setActiveFilter] = useState<string>('ALL');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const getFilterFromCategory = (cat?: string) => {
+    if (cat) {
+      const pillMatch = FILTER_PILLS.find(
+        (p) => p.sidebarKey === cat || p.id.toLowerCase() === cat.toLowerCase()
+      );
+      if (pillMatch) return pillMatch.id;
+    }
+    return 'ALL';
+  };
+
+  const getSearchFromParams = (params: ReturnType<typeof useSearchParams>) => {
+    const qParam = params.get('q') || (params.get('search') !== 'open' ? params.get('search') : null);
+    return qParam || '';
+  };
+
+  const [activeFilter, setActiveFilter] = useState<string>(() => getFilterFromCategory(category));
+  const [searchQuery, setSearchQuery] = useState<string>(() => getSearchFromParams(searchParams));
   const [visibleCount, setVisibleCount] = useState<number>(6);
 
-  // Sync state with URL params (handling sidebar navigation)
-  useEffect(() => {
-    // 1. Sync category from sidebar URL param
-    if (category) {
-      const pillMatch = FILTER_PILLS.find(
-        (p) => p.sidebarKey === category || p.id.toLowerCase() === category.toLowerCase()
-      );
-      if (pillMatch) {
-        setActiveFilter(pillMatch.id);
-      }
-    } else {
-      setActiveFilter('ALL');
-    }
+  // Selected Product for Interactive Demo & System Specs Modals
+  const [selectedDemoProduct, setSelectedDemoProduct] = useState<ProductData | null>(null);
+  const [selectedSpecsProduct, setSelectedSpecsProduct] = useState<ProductData | null>(null);
 
-    // 2. Sync search query from URL parameter if present (e.g. ?q=... or ?search=...)
-    const qParam = searchParams.get('q') || (searchParams.get('search') !== 'open' ? searchParams.get('search') : null);
-    if (qParam) {
-      setSearchQuery(qParam);
-    } else {
-      setSearchQuery('');
-    }
-  }, [category, isSearchOpen, searchParams]);
+  // Sync state with props/URL params directly during render if props change
+  const [prevCategory, setPrevCategory] = useState(category);
+  const [prevSearchParams, setPrevSearchParams] = useState(searchParams.toString());
+
+  if (category !== prevCategory || searchParams.toString() !== prevSearchParams) {
+    setPrevCategory(category);
+    setPrevSearchParams(searchParams.toString());
+    setActiveFilter(getFilterFromCategory(category));
+    setSearchQuery(getSearchFromParams(searchParams));
+  }
 
   // Handle filter selection and sync URL query parameters
   const handleFilterClick = (filterId: string) => {
@@ -180,7 +189,12 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayedProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              onOpenDemo={(p) => setSelectedDemoProduct(p)}
+              onOpenSpecs={(p) => setSelectedSpecsProduct(p)}
+            />
           ))}
         </div>
       )}
@@ -198,6 +212,19 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
         </div>
       )}
 
+      {/* Interactive Project Demo Modal */}
+      <ProjectDemoModal
+        project={selectedDemoProduct}
+        isOpen={Boolean(selectedDemoProduct)}
+        onClose={() => setSelectedDemoProduct(null)}
+      />
+
+      {/* System Engineering Specs Modal */}
+      <SystemSpecsModal
+        project={selectedSpecsProduct}
+        isOpen={Boolean(selectedSpecsProduct)}
+        onClose={() => setSelectedSpecsProduct(null)}
+      />
     </div>
   );
 }
