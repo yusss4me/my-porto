@@ -6,12 +6,15 @@ import { StatusIndicator } from "@/components/atoms/StatusIndicator";
 import { TechTag } from "@/components/atoms/TechTag";
 import { TerminalCard } from "@/components/molecules/TerminalCard";
 import { Globe, Quote } from "lucide-react";
+import { aboutData } from "@/data/about";
 
 export const BeyondCode: React.FC = () => {
+  const { beyondCodeSection } = aboutData;
+
   return (
     <section
       id="beyond-code"
-      className="relative w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0B0F17] rounded-3xl border border-slate-800/60 overflow-hidden shadow-2xl space-y-12 sm:space-y-16"
+      className="relative w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0B0F17] rounded-3xl border border-slate-800/60 overflow-hidden shadow-2xl space-y-12 sm:space-y-16 scroll-mt-28"
     >
       {/* Background Radial Gradient & Grid Pattern Backdrop */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.06)_0%,transparent_70%)]" />
@@ -25,14 +28,14 @@ export const BeyondCode: React.FC = () => {
 
       {/* Section Header */}
       <div className="relative z-10 max-w-3xl mx-auto text-center space-y-4">
-        <SystemTag text="• SYSTEM PROTOCOL" glowColor="emerald" />
+        <SystemTag text={beyondCodeSection.badgeText} glowColor="emerald" />
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight font-sans">
-          Beyond Code
+          {beyondCodeSection.title}
         </h2>
 
         <p className="text-slate-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-sans">
-          Exploring the intersection of technical mastery, human intent, and continuous equilibrium.
+          {beyondCodeSection.description}
         </p>
       </div>
 
@@ -40,57 +43,57 @@ export const BeyondCode: React.FC = () => {
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Card 1: Engineering Philosophy */}
         <TerminalCard
-          headerTag="SYS_LOG // PHILOSOPHY"
+          headerTag={beyondCodeSection.philosophyHeaderTag}
           headerRight={
             <Quote className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
           }
-          footerText="STATUS: ACTIVE"
+          footerText={beyondCodeSection.philosophyFooterText}
         >
           <div className="py-2 flex flex-col justify-center min-h-[160px]">
             <blockquote className="text-base sm:text-lg font-serif italic text-slate-200 leading-relaxed">
-              &ldquo;Engineering is not merely about writing instructions for machines; it is the deliberate act of bridging raw human intent with emergent computational capability.&rdquo;
+              &ldquo;{beyondCodeSection.philosophyQuote}&rdquo;
             </blockquote>
           </div>
         </TerminalCard>
 
         {/* Card 2: Off the Grid */}
         <TerminalCard
-          headerTag="OFF_GRID // HUMAN_SIDE"
+          headerTag={beyondCodeSection.offGridHeaderTag}
           headerRight={
             <Globe className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
           }
-          footerText="MODE: PERSONAL_EQUILIBRIUM"
+          footerText={beyondCodeSection.offGridFooterText}
         >
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-white tracking-tight font-sans">
-              Off the Grid
+              {beyondCodeSection.offGridTitle}
             </h3>
 
             <p className="text-sm text-slate-400 leading-relaxed font-sans">
-              Beyond the IDE, maintaining equilibrium requires physical exertion and continuous curiosity. Tracking the evolution of consumer tech and finding rhythm on the court.
+              {beyondCodeSection.offGridDescription}
             </p>
 
             <div className="flex flex-wrap gap-2 pt-2">
-              <TechTag label="BASKETBALL" />
-              <TechTag label="TECH_RESEARCH" />
-              <TechTag label="CREATIVE_BALANCE" />
+              {beyondCodeSection.offGridTags.map((tag, idx) => (
+                <TechTag key={idx} label={tag} />
+              ))}
             </div>
           </div>
         </TerminalCard>
 
         {/* Card 3: Current Vector */}
         <TerminalCard
-          headerTag="LIVE_FOCUS // CURRENT"
+          headerTag={beyondCodeSection.currentVectorHeaderTag}
           headerRight={<StatusIndicator text="• OPERATIONAL" glowColor="emerald" />}
-          footerText="ACTIVE_STACK: NEXTJS + PYTHON_AI"
+          footerText={beyondCodeSection.currentVectorFooterText}
         >
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-white tracking-tight font-sans">
-              Current Vector
+              {beyondCodeSection.currentVectorTitle}
             </h3>
 
             <p className="text-sm text-slate-400 leading-relaxed font-sans">
-              Architecting next-generation interfaces powered by large language models. Exploring the latent space between deterministic UI components and stochastic AI outputs.
+              {beyondCodeSection.currentVectorDescription}
             </p>
 
             {/* Visual Metric Bars Graphic */}
@@ -108,5 +111,6 @@ export const BeyondCode: React.FC = () => {
     </section>
   );
 };
+
 
 export default BeyondCode;

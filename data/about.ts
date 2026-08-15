@@ -4,6 +4,8 @@ export interface MetricItem {
 }
 
 export interface JourneyItem {
+  year?: string;
+  phase?: string;
   role: string;
   organization: string;
   period: string;
@@ -46,6 +48,34 @@ export interface AboutData {
   journey: JourneyItem[];
   skills: SkillGroup[];
   bento: BentoContent;
+  myJourneySection: {
+    badgeText: string;
+    titleHighlight: string;
+    titleText: string;
+    description: string;
+  };
+  techEcosystemSection: {
+    badgeText: string;
+    title: string;
+    description: string;
+  };
+  beyondCodeSection: {
+    badgeText: string;
+    title: string;
+    description: string;
+    philosophyHeaderTag: string;
+    philosophyQuote: string;
+    philosophyFooterText: string;
+    offGridHeaderTag: string;
+    offGridTitle: string;
+    offGridDescription: string;
+    offGridFooterText: string;
+    offGridTags: string[];
+    currentVectorHeaderTag: string;
+    currentVectorTitle: string;
+    currentVectorDescription: string;
+    currentVectorFooterText: string;
+  };
 }
 
 export const aboutData: AboutData = {
@@ -63,20 +93,44 @@ export const aboutData: AboutData = {
   ],
   journey: [
     {
-      role: "Informatics Engineering",
+      year: "2023",
+      phase: "GENESIS",
+      role: "Informatics Engineering Core",
       organization: "University Student",
-      period: "2021 — Present",
+      period: "2023 — Present",
       description:
-        "Deep diving into data structures, algorithms, and artificial intelligence. Building a strong foundation in computational theory while applying practical engineering principles.",
-      badges: ["Algorithms", "AI Fundamentals", "Data Structures"],
+        "Building foundations in algorithms and software engineering. Deep diving into data structures, computational theory, and practical engineering principles.",
+      badges: ["PYTHON", "JAVA", "DATA STRUCTURES"],
     },
     {
-      role: "Frontend Developer Intern",
+      year: "2024",
+      phase: "EVOLUTION",
+      role: "Modular Frontend Developer",
       organization: "Social Org / Internship",
       period: "2024",
       description:
         "Spearheaded the development of web interfaces using Next.js, React, and Tailwind CSS. Built reusable component systems and optimized performance.",
-      badges: ["Next.js", "Tailwind", "Atomic Design"],
+      badges: ["REACT", "TAILWIND", "TYPESCRIPT"],
+    },
+    {
+      year: "2025",
+      phase: "INTEGRATION",
+      role: "AI Pipeline & Web Fusion",
+      organization: "Tech Innovator",
+      period: "2025",
+      description:
+        "Bridging the gap by integrating machine learning models directly into production-ready web interfaces.",
+      badges: ["NEXT.JS", "SCIKIT-LEARN", "FASTAPI"],
+    },
+    {
+      year: "2026",
+      phase: "EXPANSION",
+      role: "Full-Stack AI Engineer",
+      organization: "Personal Projects",
+      period: "2026 — Present",
+      description:
+        "Scaling complex architectures, atomic design systems, and end-to-end intelligent ML pipelines.",
+      badges: ["NEXT.JS", "ATOMIC DESIGN", "ML PIPELINES"],
     },
   ],
   skills: [
@@ -108,5 +162,33 @@ export const aboutData: AboutData = {
       title: "Current Focus",
       description: "Full-Stack AI Apps — Building intelligent interfaces and neural network-backed tools.",
     },
+  },
+  myJourneySection: {
+    badgeText: "My Journey",
+    titleHighlight: "My Journey",
+    titleText: "Roadmap",
+    description: "A horizontal timeline of my evolution in Web Development & AI/ML",
+  },
+  techEcosystemSection: {
+    badgeText: "TECH ECOSYSTEM",
+    title: "Frontend & AI Engineering",
+    description: "Powering the next generation of intelligent interfaces. Building high-performance digital experiences with a sophisticated stack of modern web technologies and machine learning frameworks.",
+  },
+  beyondCodeSection: {
+    badgeText: "• SYSTEM PROTOCOL",
+    title: "Beyond Code",
+    description: "Exploring the intersection of technical mastery, human intent, and continuous equilibrium.",
+    philosophyHeaderTag: "SYS_LOG // PHILOSOPHY",
+    philosophyQuote: "Engineering is not merely about writing instructions for machines; it is the deliberate act of bridging raw human intent with emergent computational capability.",
+    philosophyFooterText: "STATUS: ACTIVE",
+    offGridHeaderTag: "OFF_GRID // HUMAN_SIDE",
+    offGridTitle: "Off the Grid",
+    offGridDescription: "Beyond the IDE, maintaining equilibrium requires physical exertion and continuous curiosity. Tracking the evolution of consumer tech and finding rhythm on the court.",
+    offGridFooterText: "MODE: PERSONAL_EQUILIBRIUM",
+    offGridTags: ["BASKETBALL", "TECH_RESEARCH", "CREATIVE_BALANCE"],
+    currentVectorHeaderTag: "LIVE_FOCUS // CURRENT",
+    currentVectorTitle: "Current Vector",
+    currentVectorDescription: "Architecting next-generation interfaces powered by large language models. Exploring the latent space between deterministic UI components and stochastic AI outputs.",
+    currentVectorFooterText: "ACTIVE_STACK: NEXTJS + PYTHON_AI",
   },
 };

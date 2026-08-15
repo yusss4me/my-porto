@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import portfolioData from '@/data/portfolioData.json';
+import { heroData } from '@/data/heroData';
 import Badge from '@/components/atoms/Badge';
 import Button from '@/components/atoms/Button';
 
@@ -74,12 +75,13 @@ export default function HeroSection() {
 
       <div className="flex flex-wrap gap-4">
         <Button href="#projects" variant="blue" size="lg">
-          View Projects
+          {heroData.viewProjectsButton}
         </Button>
         <Button href="#contact" variant="outline" size="lg">
-          Get In Touch
+          {heroData.getInTouchButton}
         </Button>
       </div>
     </section>
   );
 }
+

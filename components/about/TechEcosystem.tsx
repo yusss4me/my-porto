@@ -5,14 +5,15 @@ import { StatusBadge } from "@/components/atoms/StatusBadge";
 import { MarqueeTrack } from "@/components/molecules/MarqueeTrack";
 import { InspectionCard } from "@/components/molecules/InspectionCard";
 import { row1TechData, row2TechData, TechItem } from "@/data/techStackData";
+import { aboutData } from "@/data/about";
 
 export const TechEcosystem: React.FC = () => {
   const [activeTech, setActiveTech] = useState<TechItem | null>(null);
 
   return (
     <section
-      id="tech-ecosystem"
-      className="relative w-full py-16 sm:py-24 bg-[#0B0F17] rounded-3xl border border-slate-800/60 overflow-hidden shadow-2xl space-y-10 sm:space-y-14"
+      id="tech-stack"
+      className="relative w-full py-16 sm:py-24 bg-[#0B0F17] rounded-3xl border border-slate-800/60 overflow-hidden shadow-2xl space-y-10 sm:space-y-14 scroll-mt-28"
     >
       {/* Background Radial Glow Mask & Subtle Dotted Grid Pattern */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(45,212,191,0.06)_0%,transparent_70%)]" />
@@ -26,16 +27,17 @@ export const TechEcosystem: React.FC = () => {
 
       {/* Section Header */}
       <div className="relative z-10 max-w-3xl mx-auto text-center px-4 space-y-4">
-        <StatusBadge text="TECH ECOSYSTEM" glowColor="cyan" size="md" />
+        <StatusBadge text={aboutData.techEcosystemSection.badgeText} glowColor="cyan" size="md" />
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight font-sans">
-          Frontend & AI Engineering
+          {aboutData.techEcosystemSection.title}
         </h2>
 
         <p className="text-slate-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-sans">
-          Powering the next generation of intelligent interfaces. Building high-performance digital experiences with a sophisticated stack of modern web technologies and machine learning frameworks.
+          {aboutData.techEcosystemSection.description}
         </p>
       </div>
+
 
       {/* 2 Dual-Direction Marquee Tracks */}
       <div className="relative z-10 space-y-4 sm:space-y-6">

@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import portfolioData from '@/data/portfolioData.json';
+import { labData } from '@/data/labData';
 
 export default function LabSection() {
   const { lab } = portfolioData;
@@ -9,12 +10,12 @@ export default function LabSection() {
     <section id="lab" className="py-12 md:py-16 border-t border-white/5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
-          <span className="font-mono text-xs text-[#4edea3] tracking-widest uppercase">Research & Development</span>
+          <span className="font-mono text-xs text-[#4edea3] tracking-widest uppercase">{labData.badgeTag}</span>
           <h2 className="font-geist text-3xl md:text-5xl font-bold text-white mt-2 mb-6">
-            The AI Lab
+            {labData.title}
           </h2>
           <p className="font-inter text-[#c2c6d6] text-sm md:text-base leading-relaxed mb-8">
-            Exploring the frontiers of Human-Computer Interaction through generative AI and advanced frontend orchestration. My lab projects focus on making intelligent systems feel invisible yet powerful.
+            {labData.description}
           </p>
 
           <div className="space-y-6">
@@ -33,8 +34,8 @@ export default function LabSection() {
         </div>
         <div className="relative aspect-square w-full rounded-lg overflow-hidden border border-white/10 glass-panel">
           <Image
-            src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop"
-            alt="Lab Experimentation"
+            src={labData.imageUrl}
+            alt={labData.imageAlt}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover opacity-80"
@@ -46,3 +47,4 @@ export default function LabSection() {
     </section>
   );
 }
+

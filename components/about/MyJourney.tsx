@@ -3,43 +3,17 @@
 import React, { useRef } from "react";
 import { JourneyCard, JourneyMilestoneData } from "@/components/molecules/JourneyCard";
 import { JourneyNode } from "@/components/molecules/JourneyNode";
+import { aboutData } from "@/data/about";
 
 export type { JourneyMilestoneData as JourneyMilestone };
 
-export const defaultMilestones: JourneyMilestoneData[] = [
-  {
-    year: "2023",
-    phase: "GENESIS",
-    title: "Informatics Engineering Core",
-    description:
-      "Building foundations in algorithms and software engineering. Mastering the building blocks of logical systems.",
-    tags: ["PYTHON", "JAVA", "DATA STRUCTURES"],
-  },
-  {
-    year: "2024",
-    phase: "EVOLUTION",
-    title: "Modular Frontend Systems",
-    description:
-      "Deep dive into React and Tailwind CSS. Architecting complex, scalable dashboard interfaces.",
-    tags: ["REACT", "TAILWIND", "TYPESCRIPT"],
-  },
-  {
-    year: "2025",
-    phase: "INTEGRATION",
-    title: "AI Pipeline & Web Fusion",
-    description:
-      "Bridging the gap by integrating machine learning models directly into production-ready web interfaces.",
-    tags: ["NEXT.JS", "SCIKIT-LEARN", "FASTAPI"],
-  },
-  {
-    year: "2026",
-    phase: "EXPANSION",
-    title: "Modular Systems & Applied AI",
-    description:
-      "Scaling complex architectures, atomic design design systems, and end-to-end intelligent ML pipelines.",
-    tags: ["NEXT.JS", "ATOMIC DESIGN", "ML PIPELINES"],
-  },
-];
+export const defaultMilestones: JourneyMilestoneData[] = aboutData.journey.map((item) => ({
+  year: item.year || "2024",
+  phase: item.phase || "EVOLUTION",
+  title: item.role,
+  description: item.description,
+  tags: item.badges,
+}));
 
 export interface MyJourneyProps {
   milestones?: JourneyMilestoneData[];
@@ -51,7 +25,7 @@ export const MyJourney: React.FC<MyJourneyProps> = ({
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#0B0F17] rounded-3xl overflow-hidden border border-slate-800/80 shadow-2xl text-slate-100 my-12">
+    <section id="journey" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#0B0F17] rounded-3xl overflow-hidden border border-slate-800/80 shadow-2xl text-slate-100 my-12 scroll-mt-28">
       {/* Background Dotted Grid Pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-20"
@@ -69,13 +43,14 @@ export const MyJourney: React.FC<MyJourneyProps> = ({
         {/* Section Header */}
         <div className="space-y-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white font-mono flex items-center gap-2">
-            <span className="text-cyan-400 font-semibold">My Journey</span>{" "}
-            <span>Roadmap</span>
+            <span className="text-cyan-400 font-semibold">{aboutData.myJourneySection.titleHighlight}</span>{" "}
+            <span>{aboutData.myJourneySection.titleText}</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 font-sans max-w-2xl">
-            A horizontal timeline of my evolution in Web Development &amp; AI/ML
+            {aboutData.myJourneySection.description}
           </p>
         </div>
+
 
         {/* Horizontal Timeline Container */}
         <div className="relative w-full">

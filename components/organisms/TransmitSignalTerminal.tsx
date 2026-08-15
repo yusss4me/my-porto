@@ -8,38 +8,8 @@ import { TerminalInput, TerminalTextArea } from '@/components/atoms/TerminalInpu
 import { ScopeChip } from '@/components/molecules/ScopeChip';
 import { FaqAccordionItem } from '@/components/molecules/FaqAccordionItem';
 
-interface ProjectScope {
-  id: string;
-  label: string;
-}
+import { PROJECT_SCOPES, FAQ_ITEMS, contactData } from '@/data/contactData';
 
-const PROJECT_SCOPES: ProjectScope[] = [
-  { id: '01', label: '[01] WEB_APPLICATION' },
-  { id: '02', label: '[02] AI / ML_SERVICES' },
-  { id: '03', label: '[03] FRONTEND_ARCHITECTURE' },
-  { id: '04', label: '[04] OTHER_INQUIRY' }
-];
-
-const FAQ_ITEMS = [
-  {
-    id: '01',
-    question: '> ACCEPTING_NEW_CONTRACTS?',
-    answer:
-      'AFFIRMATIVE. Open for freelance contracts, full-time remote engineering roles, and architectural consultations worldwide.'
-  },
-  {
-    id: '02',
-    question: '> TYPICAL_RESPONSE_LATENCY?',
-    answer:
-      'All incoming signals on GitHub and LinkedIn are acknowledged within < 24 hours. X/Twitter queries experience standard latency.'
-  },
-  {
-    id: '03',
-    question: '> PRIMARY_ENGINEERING_STACK?',
-    answer:
-      'Next.js 14+, React, TypeScript, Tailwind CSS, Python/FastAPI, Node.js, and modern AI/ML API integration pipelines.'
-  }
-];
 
 export const TransmitSignalTerminal: React.FC = () => {
   const [selectedScope, setSelectedScope] = useState<string>('01');
@@ -69,18 +39,18 @@ export const TransmitSignalTerminal: React.FC = () => {
   return (
     <div className="space-y-6 font-mono">
       {/* Main Terminal Card */}
-      <div className="relative p-6 sm:p-8 bg-[#0b0e14]/90 backdrop-blur border border-slate-800 rounded-xl shadow-2xl">
+      <div id="transmit-terminal" className="relative p-6 sm:p-8 bg-[#0b0e14]/90 backdrop-blur border border-slate-800 rounded-xl shadow-2xl scroll-mt-28">
         <CornerBrackets color="border-sky-500" size="md" />
 
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide flex items-center gap-2">
             <span className="text-sky-400">[</span>
-            <span>TRANSMIT_SIGNAL</span>
+            <span>{contactData.terminal.title}</span>
             <span className="text-sky-400">]</span>
           </h1>
           <p className="mt-2 text-xs sm:text-sm text-slate-400 tracking-wider">
-            INITIALIZING SECURE CONNECTION VIA PROTOCOL v9.0.4...
+            {contactData.terminal.subtitle}
           </p>
         </div>
 
@@ -94,7 +64,7 @@ export const TransmitSignalTerminal: React.FC = () => {
               className="mb-6 p-4 bg-emerald-500/10 border border-emerald-500/40 rounded-lg text-emerald-400 text-xs flex items-center gap-3"
             >
               <Check className="w-4 h-4 shrink-0" />
-              <span>TRANSMISSION_SUCCESSFUL // Signal received. Operational response will be dispatched shortly.</span>
+              <span>{contactData.terminal.successNotification}</span>
             </motion.div>
           )}
         </AnimatePresence>
@@ -103,7 +73,7 @@ export const TransmitSignalTerminal: React.FC = () => {
           {/* Project Scope Chips */}
           <div>
             <label className="block text-xs text-emerald-400 font-bold tracking-wider mb-3">
-              [ SELECT_PROJECT_SCOPE ]
+              {contactData.terminal.scopeLabel}
             </label>
             <div className="flex flex-wrap gap-2.5">
               {PROJECT_SCOPES.map((scope) => (
@@ -122,34 +92,34 @@ export const TransmitSignalTerminal: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <TerminalInput
               id="sender-name"
-              label="SENDER_NAME //"
+              label={contactData.terminal.senderNameLabel}
               type="text"
               required
               value={senderName}
               onChange={(e) => setSenderName(e.target.value)}
-              placeholder="Enter identification..."
+              placeholder={contactData.terminal.senderNamePlaceholder}
             />
 
             <TerminalInput
               id="return-address"
-              label="RETURN_ADDRESS //"
+              label={contactData.terminal.returnAddressLabel}
               type="email"
               required
               value={returnAddress}
               onChange={(e) => setReturnAddress(e.target.value)}
-              placeholder="user@domain.tld"
+              placeholder={contactData.terminal.returnAddressPlaceholder}
             />
           </div>
 
           {/* Transmission Payload Textarea */}
           <TerminalTextArea
             id="transmission-payload"
-            label="TRANSMISSION_PAYLOAD //"
+            label={contactData.terminal.payloadLabel}
             required
             rows={5}
             value={transmissionPayload}
             onChange={(e) => setTransmissionPayload(e.target.value)}
-            placeholder="Detail your project parameters here..."
+            placeholder={contactData.terminal.payloadPlaceholder}
           />
 
           {/* Action Button */}
@@ -161,11 +131,11 @@ export const TransmitSignalTerminal: React.FC = () => {
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>TRANSMITTING_SIGNAL...</span>
+                <span>{contactData.terminal.submittingButton}</span>
               </>
             ) : (
               <>
-                <span>TRANSMIT_MESSAGE</span>
+                <span>{contactData.terminal.submitButton}</span>
                 <Send className="w-4 h-4" />
               </>
             )}
@@ -174,9 +144,9 @@ export const TransmitSignalTerminal: React.FC = () => {
       </div>
 
       {/* Footer FAQ Accordion: [ FREQUENT_INQUIRIES_LOG ] */}
-      <div className="p-5 sm:p-6 bg-[#0b0e14]/90 backdrop-blur border border-slate-800 rounded-xl shadow-lg">
+      <div id="faq" className="p-5 sm:p-6 bg-[#0b0e14]/90 backdrop-blur border border-slate-800 rounded-xl shadow-lg scroll-mt-28">
         <div className="text-xs text-slate-400 tracking-wider mb-4">
-          [ FREQUENT_INQUIRIES_LOG ]
+          {contactData.terminal.faqSectionTitle}
         </div>
 
         <div className="space-y-3">
