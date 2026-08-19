@@ -16,28 +16,28 @@
   },
   "techStack": [
     {
+      "name": "TypeScript",
+      "category": "Typescript"
+    },
+    {
       "name": "Next.js",
-      "category": "Frontend"
+      "category": "Typescript"
     },
     {
-      "name": "React",
-      "category": "Frontend"
-    },
-    {
-      "name": "Tailwind CSS",
-      "category": "Frontend"
+      "name": "React.js",
+      "category": "Typescript"
     },
     {
       "name": "Python",
-      "category": "AI/ML"
+      "category": "python"
     },
     {
-      "name": "Machine Learning",
-      "category": "AI/ML"
+      "name": "AI/Machine Learning",
+      "category": "python"
     },
     {
-      "name": "PyTorch",
-      "category": "AI/ML"
+      "name": "Django",
+      "category": "python"
     }
   ],
   "projects": [

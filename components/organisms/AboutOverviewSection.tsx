@@ -23,7 +23,7 @@ export default function AboutOverviewSection() {
   ];
 
   return (
-    <section id="about-overview" className="py-12 md:py-16 border-t border-white/5">
+    <section id="about-overview" className="py-16 md:py-24 border-t border-white/5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Column: Information & Highlights */}
         <div>
@@ -32,7 +32,7 @@ export default function AboutOverviewSection() {
             <span>ABOUT ME // OVERVIEW</span>
           </div>
           
-          <h2 className="font-geist text-3xl md:text-5xl font-bold text-white mt-2 mb-6">
+          <h2 className="font-geist text-2xl md:text-3xl lg:text-5xl font-bold text-white mt-2 mb-6">
             Building Digital Products & Exploring AI
           </h2>
           

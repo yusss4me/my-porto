@@ -30,12 +30,12 @@ export default function MainLayout({ children }: MainLayoutProps) {
       </Suspense>
 
       {/* Safe padding on mobile (pr-16) to prevent overlap with the right-aligned sidebar */}
-      <main className="max-w-6xl mx-auto pl-24 pr-16 md:px-16 pt-24 w-full">
+      <main className="max-w-6xl mx-auto  pl-8 sm:pl-12 md:pl-16 lg:pl-24 xl:pl-2 pr-20 lg:pr-8 pt-16 w-full">
         {children}
-      <Copyright />
+        <Copyright />
       </main>
 
-      
+
       <MobileBottomNav />
     </div>
   );

@@ -16,13 +16,13 @@ export default function ProjectGrid() {
   const [selectedSpecsProduct, setSelectedSpecsProduct] = useState<ProductData | null>(null);
 
   return (
-    <section id="projects" className="py-12 md:py-16 border-t border-white/5">
+    <section id="projects" className="py-16 md:py-24 border-t border-white/5">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
         <div>
           <span className="font-mono text-xs text-[#3b82f6] tracking-widest uppercase font-bold block mb-2">
             Selected Work
           </span>
-          <h2 className="font-geist text-3xl md:text-5xl font-bold text-white mt-1">
+          <h2 className="font-geist text-2xl md:text-3xl lg:text-5xl font-bold text-white mt-1">
             Engineering Intelligent Interfaces.
           </h2>
         </div>

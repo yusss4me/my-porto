@@ -15,7 +15,7 @@ export default function Badge({ children, variant = 'blue' }: BadgeProps) {
 
   return (
     <span
-      className={`inline-block border rounded-full px-3 py-1 text-[10px] tracking-wider uppercase font-mono ${colorClasses}`}
+      className={`inline-block border rounded-full px-3 py-1 text-[11px] md:text-xs tracking-wider uppercase font-mono ${colorClasses}`}
     >
       {children}
     </span>

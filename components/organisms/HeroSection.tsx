@@ -11,8 +11,8 @@ export default function HeroSection() {
   const { profile, techStack } = portfolioData;
 
   return (
-    <section id="home" className="py-12 md:py-16 flex flex-col justify-center">
-      <div className="inline-flex mb-6">
+    <section id="home" className="py-16 md:py-24 flex flex-col justify-center">
+      <div className="inline-flex mb-3">
         <Badge variant="green">{profile.status}</Badge>
       </div>
       
@@ -20,7 +20,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="font-geist text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 max-w-4xl leading-[1.1]"
+        className="font-geist text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-3 max-w-4xl leading-[1.1]"
       >
         {profile.name}
       </motion.h1>
@@ -29,12 +29,12 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-        className="font-geist text-2xl md:text-4xl font-semibold text-[#adc6ff] mb-6 max-w-3xl leading-snug"
+        className="font-geist text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-[#adc6ff] max-w-3xl leading-snug mb-4"
       >
         {profile.title}
       </motion.h2>
       
-      <p className="font-inter text-[#c2c6d6] text-base md:text-lg max-w-2xl mb-10 leading-relaxed">
+      <p className="font-inter text-[#c2c6d6] text-base md:text-lg max-w-2xl mb-6 leading-relaxed">
         {profile.bio}
       </p>
 
@@ -52,7 +52,7 @@ export default function HeroSection() {
         }}
         initial="hidden"
         animate="visible"
-        className="flex flex-wrap gap-3 max-w-2xl mb-12"
+        className="flex flex-wrap gap-2.5 max-w-2xl mb-10"
       >
         {techStack.map((tech) => (
           <motion.div
@@ -66,7 +66,7 @@ export default function HeroSection() {
               },
             }}
           >
-            <Badge variant={tech.category === 'AI/ML' ? 'green' : 'blue'}>
+            <Badge variant={tech.category === 'python' ? 'green' : 'blue'}>
               {tech.name}
             </Badge>
           </motion.div>
