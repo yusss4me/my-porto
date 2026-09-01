@@ -56,9 +56,12 @@ export default function Navbar() {
                 {/* Active Indicator with Framer Motion */}
                 {isActive && (
                   <motion.span
-                    layoutId="activeGlobalNav"
+                  
+                     initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.25, ease: 'easeOut' }}
                     className="absolute inset-0 bg-white/10 rounded-full border border-white/20 shadow-[0_0_12px_rgba(59,130,246,0.25)]"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    
                   />
                 )}
               </Link>

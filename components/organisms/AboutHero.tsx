@@ -134,6 +134,7 @@ export const AboutHero: React.FC<AboutHeroProps> = ({ hero, stats }) => {
                     src={hero.photoUrl}
                     alt="Ardi Yustiar Profile"
                     fill
+                    sizes="(max-width: 640px) 144px, 176px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     priority
                   />
@@ -251,6 +252,7 @@ export const AboutHero: React.FC<AboutHeroProps> = ({ hero, stats }) => {
                     src={hero.photoUrl}
                     alt="Ardi Yustiar Profile"
                     fill
+                    sizes="80px"
                     className="object-cover"
                   />
                 </div>
@@ -312,6 +314,7 @@ export const AboutHero: React.FC<AboutHeroProps> = ({ hero, stats }) => {
                     src={hero.photoUrl}
                     alt="Ardi Yustiar Profile"
                     fill
+                    sizes="80px"
                     className="object-cover"
                   />
                 </div>

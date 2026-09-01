@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ExternalLink, Terminal, Code2, Cpu, Sparkles, Zap } from 'lucide-react';
 
@@ -188,24 +189,26 @@ export default function ProductCard({ product, onOpenDemo, onOpenSpecs }: Produc
 
         {/* Card Footer Actions (2 Equal Width Buttons) */}
         <div className="grid grid-cols-2 gap-3 pt-4 border-t border-white/5 mt-auto">
-          <a
-            href={product.livePreviewUrl}
-            target={isInteractiveDemo ? '_self' : '_blank'}
-            rel={isInteractiveDemo ? undefined : 'noopener noreferrer'}
-            onClick={handleLivePreviewClick}
-            className={`relative flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium transition-all text-center ${
-              isInteractiveDemo
-                ? 'bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-emerald-600/20 border border-blue-500/40 text-blue-300 hover:border-blue-400 hover:text-white shadow-[0_0_15px_rgba(59,130,246,0.15)]'
-                : 'bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-slate-200'
-            }`}
-          >
-            {isInteractiveDemo ? (
+          {isInteractiveDemo ? (
+            <Link
+              href={`/projects/${product.id}/demo`}
+              className="relative flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium transition-all text-center bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-emerald-600/20 border border-blue-500/40 text-blue-300 hover:border-blue-400 hover:text-white shadow-[0_0_15px_rgba(59,130,246,0.15)]"
+            >
               <Sparkles className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-            ) : (
+              <span>Live Demo ✦</span>
+            </Link>
+          ) : (
+            <a
+              href={product.livePreviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleLivePreviewClick}
+              className="relative flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium transition-all text-center bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-slate-200"
+            >
               <ExternalLink className="w-3.5 h-3.5" />
-            )}
-            <span>{isInteractiveDemo ? 'Live Demo ✦' : 'Live Preview'}</span>
-          </a>
+              <span>Live Preview</span>
+            </a>
+          )}
 
           <button
             type="button"

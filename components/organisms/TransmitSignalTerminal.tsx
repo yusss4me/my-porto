@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Loader2, Check } from 'lucide-react';
+import { Send, Loader2, Check, AlertTriangle } from 'lucide-react';
 import { CornerBrackets } from '@/components/atoms/CornerBrackets';
 import { TerminalInput, TerminalTextArea } from '@/components/atoms/TerminalInput';
 import { ScopeChip } from '@/components/molecules/ScopeChip';
 import { FaqAccordionItem } from '@/components/molecules/FaqAccordionItem';
 
 import { PROJECT_SCOPES, FAQ_ITEMS, contactData } from '@/data/contactData';
-
+import { sendContactMessage } from '@/src/lib/api';
 
 export const TransmitSignalTerminal: React.FC = () => {
   const [selectedScope, setSelectedScope] = useState<string>('01');
@@ -19,21 +19,36 @@ export const TransmitSignalTerminal: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
+    setFormSubmitted(false);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const selectedScopeLabel = PROJECT_SCOPES.find((s) => s.id === selectedScope)?.label || 'General Inquiry';
+      await sendContactMessage({
+        sender_name: senderName,
+        sender_email: returnAddress,
+        subject: `Scope: ${selectedScopeLabel}`,
+        message_body: transmissionPayload,
+      });
+
       setFormSubmitted(true);
       setSenderName('');
       setReturnAddress('');
       setTransmissionPayload('');
 
-      setTimeout(() => setFormSubmitted(false), 5000);
-    }, 1200);
+      setTimeout(() => setFormSubmitted(false), 6000);
+    } catch (err: any) {
+      console.error('Failed to send signal to Django backend:', err);
+      setSubmitError(err.message || 'Signal transmission failed. Backend host unreachable.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -65,6 +80,18 @@ export const TransmitSignalTerminal: React.FC = () => {
             >
               <Check className="w-4 h-4 shrink-0" />
               <span>{contactData.terminal.successNotification}</span>
+            </motion.div>
+          )}
+
+          {submitError && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="mb-6 p-4 bg-red-500/10 border border-red-500/40 rounded-lg text-red-400 text-xs flex items-center gap-3"
+            >
+              <AlertTriangle className="w-4 h-4 shrink-0" />
+              <span>[TRANSMISSION ERROR]: {submitError}</span>
             </motion.div>
           )}
         </AnimatePresence>

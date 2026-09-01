@@ -2,15 +2,17 @@
 
 import React, { useState, useEffect, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Search, ChevronDown, X } from 'lucide-react';
+import { Search, ChevronDown, X, Server, AlertTriangle } from 'lucide-react';
 import ProductCard, { ProductData } from '../molecules/ProductCard';
-import ProjectDemoModal from './ProjectDemoModal';
 import SystemSpecsModal from './SystemSpecsModal';
 import shopData from '@/data/shopData.json';
+import { Project } from '@/src/lib/api';
 
 interface ClientStoreCatalogProps {
   category?: string;
   isSearchOpen?: boolean;
+  initialProjects?: Project[] | null;
+  isApiError?: boolean;
 }
 
 const FILTER_PILLS = [
@@ -21,7 +23,59 @@ const FILTER_PILLS = [
   { id: 'ACADEMIC', label: 'ACADEMIC', sidebarKey: 'academic' },
 ];
 
-export default function ClientStoreCatalog({ category, isSearchOpen }: ClientStoreCatalogProps) {
+export function mapDjangoProjectToProductData(p: Project): ProductData {
+  let category = p.category || 'WEB_APPS';
+  let sidebarCategory = 'fullstack';
+
+  const catUpper = category.toUpperCase();
+  if (catUpper.includes('AI') || catUpper.includes('MACHINE LEARNING') || catUpper.includes('ML')) {
+    category = 'AI/ML';
+    sidebarCategory = 'ai';
+  } else if (catUpper.includes('VISION') || catUpper.includes('UI') || catUpper.includes('WEBGL') || catUpper.includes('FRONTEND') || catUpper.includes('COMPUTER VISION')) {
+    category = 'FRONTEND/UI';
+    sidebarCategory = 'ui-ux';
+  } else if (catUpper.includes('ACADEMIC') || catUpper.includes('RESEARCH')) {
+    category = 'ACADEMIC';
+    sidebarCategory = 'academic';
+  } else {
+    category = 'WEB_APPS';
+    sidebarCategory = 'fullstack';
+  }
+
+  const formattedMetrics = p.metrics && typeof p.metrics === 'object'
+    ? Object.entries(p.metrics).map(([key, val]) => ({
+        label: key.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase()),
+        value: String(val),
+      }))
+    : [];
+
+  return {
+    id: String(p.id),
+    componentName: p.title,
+    category: category,
+    sidebarCategory: sidebarCategory,
+    year: p.created_at ? new Date(p.created_at).getFullYear().toString() : new Date().getFullYear().toString(),
+    livePreviewUrl: p.demo_url || '#',
+    sourceCodeUrl: p.github_url || '#',
+    techStack: p.tags || [],
+    description: p.summary || p.description,
+    demoType: p.demo_url ? 'EXTERNAL' : 'NONE',
+    systemSpecs: formattedMetrics.length > 0 ? {
+      architecturePipeline: `${p.title} -> Django REST Framework -> Next.js Client`,
+      apiEndpoint: `GET /api/v1/projects/${p.slug}/`,
+      requestPayload: { slug: p.slug },
+      responsePayload: { id: p.id, title: p.title, category: p.category },
+      metrics: formattedMetrics
+    } : undefined
+  };
+}
+
+export default function ClientStoreCatalog({
+  category,
+  isSearchOpen,
+  initialProjects,
+  isApiError = false,
+}: ClientStoreCatalogProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [, startTransition] = useTransition();
@@ -45,8 +99,7 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
   const [searchQuery, setSearchQuery] = useState<string>(() => getSearchFromParams(searchParams));
   const [visibleCount, setVisibleCount] = useState<number>(6);
 
-  // Selected Product for Interactive Demo & System Specs Modals
-  const [selectedDemoProduct, setSelectedDemoProduct] = useState<ProductData | null>(null);
+  // Selected Product for System Specs Modal
   const [selectedSpecsProduct, setSelectedSpecsProduct] = useState<ProductData | null>(null);
 
   // Sync state with props/URL params directly during render if props change
@@ -88,8 +141,13 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
     });
   };
 
+  // Determine source data (Django API dynamic projects vs fallback shopData)
+  const sourceProducts: ProductData[] = initialProjects && initialProjects.length > 0
+    ? initialProjects.map(mapDjangoProjectToProductData)
+    : (shopData as ProductData[]);
+
   // Filter products by active category filter and search query
-  const filteredProducts = (shopData as ProductData[]).filter((product) => {
+  const filteredProducts = sourceProducts.filter((product) => {
     // Category match
     let matchesCategory = true;
     if (activeFilter !== 'ALL') {
@@ -119,6 +177,18 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
       <div className="space-y-6">
         {/* Section Tag */}
         <div>
+          {initialProjects && initialProjects.length > 0 ? (
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs mb-3">
+              <Server className="w-3.5 h-3.5" />
+              <span>LIVE API: DJANGO DRF CONNECTED ({initialProjects.length} PROJECTS)</span>
+            </div>
+          ) : isApiError ? (
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs mb-3">
+              <AlertTriangle className="w-3.5 h-3.5" />
+              <span>BACKEND API UNREACHABLE — SHOWING OFFLINE CATALOG</span>
+            </div>
+          ) : null}
+
           <span className="font-mono text-xs text-blue-400 tracking-[0.25em] uppercase font-bold block mb-2">
             FULL PROJECT ARCHIVE
           </span>
@@ -192,7 +262,7 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
             <ProductCard
               key={product.id}
               product={product}
-              onOpenDemo={(p) => setSelectedDemoProduct(p)}
+              onOpenDemo={(p) => router.push(`/projects/${p.id}/demo`)}
               onOpenSpecs={(p) => setSelectedSpecsProduct(p)}
             />
           ))}
@@ -211,13 +281,6 @@ export default function ClientStoreCatalog({ category, isSearchOpen }: ClientSto
           </button>
         </div>
       )}
-
-      {/* Interactive Project Demo Modal */}
-      <ProjectDemoModal
-        project={selectedDemoProduct}
-        isOpen={Boolean(selectedDemoProduct)}
-        onClose={() => setSelectedDemoProduct(null)}
-      />
 
       {/* System Engineering Specs Modal */}
       <SystemSpecsModal

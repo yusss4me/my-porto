@@ -32,9 +32,11 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
       {/* Active Indicator Sliding Background */}
       {(isActive || isPopoverOpen) && (
         <motion.span
-          layoutId="activeSidebarTab"
+           initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.25, ease: 'easeOut' }}
           className="absolute inset-0 bg-[#3b82f6]/15 border border-[#3b82f6]/40 rounded-full shadow-[0_0_14px_rgba(59,130,246,0.3)]"
-          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+          
         />
       )}
 

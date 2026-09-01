@@ -127,11 +127,11 @@ export default function Sidebar() {
   const matchingProjects = useMemo(() => {
     if (!searchQuery.trim()) return [];
     const q = searchQuery.toLowerCase();
-    return shopData.filter((item) =>
-      item.componentName.toLowerCase().includes(q) ||
-      item.category.toLowerCase().includes(q) ||
-      item.description.toLowerCase().includes(q) ||
-      item.techStack.some((tech) => tech.toLowerCase().includes(q))
+    return (shopData as any[]).filter((item) =>
+      item.componentName?.toLowerCase().includes(q) ||
+      item.category?.toLowerCase().includes(q) ||
+      item.description?.toLowerCase().includes(q) ||
+      item.techStack?.some((tech: string) => tech.toLowerCase().includes(q))
     ).slice(0, 4);
   }, [searchQuery]);
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import ClientStoreCatalog from './ClientStoreCatalog';
+import { getProjects, Project } from '@/src/lib/api';
 
 interface StoreCatalogProps {
   category?: string;
@@ -7,10 +8,25 @@ interface StoreCatalogProps {
 }
 
 export default async function StoreCatalog({ category, isSearchOpen }: StoreCatalogProps) {
-  // Simulate network latency to demonstrate Next.js Streaming and Skeleton fallback loading state
-  await new Promise((resolve) => setTimeout(resolve, 300));
+  let initialProjects: Project[] | null = null;
+  let isApiError = false;
 
-  return <ClientStoreCatalog category={category} isSearchOpen={isSearchOpen} />;
+  try {
+    initialProjects = await getProjects();
+  } catch (error) {
+    console.error('Failed to fetch dynamic projects from Django backend:', error);
+    isApiError = true;
+  }
+
+  return (
+    <ClientStoreCatalog
+      category={category}
+      isSearchOpen={isSearchOpen}
+      initialProjects={initialProjects}
+      isApiError={isApiError}
+    />
+  );
 }
+
 
 

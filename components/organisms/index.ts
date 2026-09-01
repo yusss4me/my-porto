@@ -14,6 +14,7 @@ export * from "./MyJourney";
 export { default as MyJourney } from "./MyJourney";
 export { default as Navbar } from "./Navbar";
 export { default as ProjectDemoModal } from "./ProjectDemoModal";
+export { default as ProjectDemoView } from "./ProjectDemoView";
 export { default as ProjectGrid } from "./ProjectGrid";
 export * from "./ProtocolFaqPopover";
 export * from "./QuickTransmitPopover";
