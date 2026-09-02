@@ -4,13 +4,15 @@ import React from 'react';
 
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: 'blue' | 'green';
+  variant?: 'blue' | 'green' | 'purple';
 }
 
 export default function Badge({ children, variant = 'blue' }: BadgeProps) {
   const colorClasses =
     variant === 'green'
       ? 'border-[#10b981] bg-[#10b981]/10 text-[#4edea3]'
+      : variant === 'purple'
+      ? 'border-[#a855f7] bg-[#a855f7]/10 text-[#c084fc]'
       : 'border-[#3b82f6] bg-[#3b82f6]/10 text-[#adc6ff]';
 
   return (

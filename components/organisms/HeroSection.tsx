@@ -70,7 +70,15 @@ export default function HeroSection() {
               },
             }}
           >
-            <Badge variant={tech.category === 'frontend' ? 'blue' : 'green'}>
+            <Badge
+              variant={
+                tech.category === 'ai'
+                  ? 'purple'
+                  : tech.category === 'backend'
+                  ? 'green'
+                  : 'blue'
+              }
+            >
               {tech.name}
             </Badge>
           </motion.div>

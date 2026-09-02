@@ -50,6 +50,10 @@
     {
       "name": "SCIKIT-LEARN",
       "category": "ai"
+    },
+    {
+      "name": "Artificial Neural-Network",
+      "category": "ai"
     }
   ],
   "projects": [
