@@ -30,9 +30,9 @@ export default function HeroSection() {
       >
         <TypewriterText
           strings={[
-            'I build Full-Stack Web Applications',
-            'I build Machine Learning & AI Models',
-            'I build Next.js & Django Ecosystems',
+            'Full-Stack Web Systems',
+            'Machine Learning & AI Models',
+            'Next.js & Django Ecosystems',
             'I build Interactive User Interfaces',
           ]}
         />

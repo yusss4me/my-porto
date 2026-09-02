@@ -67,7 +67,7 @@ export default function AboutOverviewSection() {
         </div>
 
         {/* Right Column: Profile Image Container with TechEcosystem Overlay */}
-        <div className="relative aspect-square w-full rounded-2xl overflow-hidden border border-white/10 glass-panel shadow-2xl group">
+        <div className="relative aspect-[4/5] sm:aspect-square w-full rounded-2xl overflow-hidden border border-white/10 glass-panel shadow-2xl group max-w-lg mx-auto md:max-w-none">
           <Image
             src={aboutData.hero.photoUrl}
             alt="Ardi Yustiar Profile"
@@ -76,17 +76,17 @@ export default function AboutOverviewSection() {
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             priority={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/30 to-transparent pointer-events-none" />
           
           {/* TechEcosystem Overlay Widget */}
-          <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-[#090d16]/90 border border-white/10 backdrop-blur-md shadow-lg space-y-2">
+          <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 p-2.5 sm:p-3.5 rounded-xl bg-[#090d16]/90 border border-white/10 backdrop-blur-md shadow-lg space-y-1.5 sm:space-y-2">
             <div className="flex items-center justify-between px-1">
-              <span className="font-mono text-[11px] text-cyan-400 font-bold uppercase tracking-wider">
+              <span className="font-mono text-[10px] sm:text-[11px] text-cyan-400 font-bold uppercase tracking-wider">
                 // TECH_ECOSYSTEM
               </span>
-              <span className="font-mono text-[10px] text-slate-400">STACK MATRIX</span>
+              <span className="font-mono text-[9px] sm:text-[10px] text-slate-400">STACK MATRIX</span>
             </div>
-            <div className="overflow-hidden rounded-lg bg-[#050811]/60 py-1.5 border border-white/5">
+            <div className="overflow-hidden rounded-lg bg-[#050811]/60 py-1 sm:py-1.5 border border-white/5">
               <MarqueeTrack
                 items={row1TechData}
                 direction="left"
