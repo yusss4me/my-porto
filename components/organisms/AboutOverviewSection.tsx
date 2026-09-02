@@ -7,6 +7,9 @@ import { aboutData } from "@/data/about";
 import { ArrowRight, User } from "lucide-react";
 import TypewriterText from "@/components/atoms/TypewriterText";
 
+import { MarqueeTrack } from "@/components/molecules/MarqueeTrack";
+import { row1TechData } from "@/data/techStackData";
+
 export default function AboutOverviewSection() {
   const subtextStrings = Array.isArray(aboutData.hero.subtext)
     ? aboutData.hero.subtext
@@ -63,7 +66,7 @@ export default function AboutOverviewSection() {
           </Link>
         </div>
 
-        {/* Right Column: Profile Image Container */}
+        {/* Right Column: Profile Image Container with TechEcosystem Overlay */}
         <div className="relative aspect-square w-full rounded-2xl overflow-hidden border border-white/10 glass-panel shadow-2xl group">
           <Image
             src={aboutData.hero.photoUrl}
@@ -73,10 +76,23 @@ export default function AboutOverviewSection() {
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             priority={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent pointer-events-none" />
-          <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#090d16]/80 border border-white/10 backdrop-blur-md">
-            <p className="font-mono text-xs text-cyan-400 font-semibold mb-1">Ardi Yustiar</p>
-            <p className="font-inter text-xs text-zinc-300">Informatics Engineering Student & Tech Innovator</p>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent pointer-events-none" />
+          
+          {/* TechEcosystem Overlay Widget */}
+          <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-[#090d16]/90 border border-white/10 backdrop-blur-md shadow-lg space-y-2">
+            <div className="flex items-center justify-between px-1">
+              <span className="font-mono text-[11px] text-cyan-400 font-bold uppercase tracking-wider">
+                // TECH_ECOSYSTEM
+              </span>
+              <span className="font-mono text-[10px] text-slate-400">STACK MATRIX</span>
+            </div>
+            <div className="overflow-hidden rounded-lg bg-[#050811]/60 py-1.5 border border-white/5">
+              <MarqueeTrack
+                items={row1TechData}
+                direction="left"
+                speedDuration={24}
+              />
+            </div>
           </div>
         </div>
       </div>
