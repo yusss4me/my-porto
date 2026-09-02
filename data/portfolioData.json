@@ -4,7 +4,7 @@
     "title": "Fullstack Developer & AI Enthusiast",
     "subtitle": "Engineering high-performance digital experiences.",
     "avatar": "/avatar.jpg",
-    "bio": "Bridging the gap between complex algorithms and intuitive user interfaces.",
+    "bio": "Crafting scalable web applications and intelligent machine learning pipelines with modern tech stacks.",
     "yearsExperience": "8+",
     "aiAgentsDeployed": 12,
     "status": "Available for Collaboration",
@@ -16,28 +16,40 @@
   },
   "techStack": [
     {
-      "name": "TypeScript",
-      "category": "Typescript"
+      "name": "NEXT.JS",
+      "category": "frontend"
     },
     {
-      "name": "Next.js",
-      "category": "Typescript"
+      "name": "REACT",
+      "category": "frontend"
     },
     {
-      "name": "React.js",
-      "category": "Typescript"
+      "name": "TYPESCRIPT",
+      "category": "frontend"
     },
     {
-      "name": "Python",
-      "category": "python"
+      "name": "TAILWIND CSS",
+      "category": "frontend"
     },
     {
-      "name": "AI/Machine Learning",
-      "category": "python"
+      "name": "DJANGO",
+      "category": "backend"
     },
     {
-      "name": "Django",
-      "category": "python"
+      "name": "PYTHON",
+      "category": "backend"
+    },
+    {
+      "name": "POSTGRESQL",
+      "category": "backend"
+    },
+    {
+      "name": "AI/MACHINE LEARNING",
+      "category": "ai"
+    },
+    {
+      "name": "SCIKIT-LEARN",
+      "category": "ai"
     }
   ],
   "projects": [

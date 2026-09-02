@@ -33,7 +33,7 @@ export default function HeroSection() {
             'Full-Stack Web Systems',
             'Machine Learning & AI Models',
             'Next.js & Django Ecosystems',
-            'I build Interactive User Interfaces',
+            'Scalable Cloud Infrastructure',
           ]}
         />
       </motion.h2>
@@ -70,7 +70,7 @@ export default function HeroSection() {
               },
             }}
           >
-            <Badge variant={tech.category === 'python' ? 'green' : 'blue'}>
+            <Badge variant={tech.category === 'frontend' ? 'blue' : 'green'}>
               {tech.name}
             </Badge>
           </motion.div>
