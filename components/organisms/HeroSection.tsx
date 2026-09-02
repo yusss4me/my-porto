@@ -26,7 +26,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-        className="font-geist text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-[#adc6ff] max-w-3xl leading-snug mb-4"
+        className="font-geist text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-[#adc6ff] max-w-3xl leading-snug mb-4 min-h-[3.25rem] sm:min-h-[4rem] flex items-center"
       >
         <TypewriterText
           strings={[

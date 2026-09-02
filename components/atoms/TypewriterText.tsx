@@ -67,7 +67,7 @@ export default function TypewriterText({
 
   return (
     <span className={`inline-flex items-center ${className}`}>
-      <span>{displayedText}</span>
+      <span>{displayedText || '\u00A0'}</span>
       {showCursor && (
         <span className="animate-pulse ml-0.5 text-[#3b82f6] font-mono font-bold select-none">
           |
