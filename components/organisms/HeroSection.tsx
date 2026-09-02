@@ -28,13 +28,12 @@ export default function HeroSection() {
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
         className="font-geist text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-[#adc6ff] max-w-3xl leading-snug mb-4"
       >
-        I build{' '}
         <TypewriterText
           strings={[
-            'Full-Stack Web Applications',
-            'Machine Learning & AI Models',
-            'Next.js & Django Ecosystems',
-            'Interactive User Interfaces',
+            'I build Full-Stack Web Applications',
+            'I build Machine Learning & AI Models',
+            'I build Next.js & Django Ecosystems',
+            'I build Interactive User Interfaces',
           ]}
         />
       </motion.h2>

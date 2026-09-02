@@ -38,7 +38,7 @@ export interface BentoContent {
 export interface AboutHeroData {
   tagline: string;
   headline: string;
-  subtext: string;
+  subtext: string | string[];
   photoUrl: string;
 }
 
@@ -82,8 +82,10 @@ export const aboutData: AboutData = {
   hero: {
     tagline: "SYSTEM_INITIALIZED",
     headline: "Hi, I'm Ardi Yustiar — Building Digital Products & Exploring AI.",
-    subtext:
-      "I am an Informatics Engineering student and tech innovator driven by a clinical obsession with futuristic design and algorithmic efficiency. My work lives at the intersection of highly polished frontend engineering and artificial intelligence...",
+    subtext: [
+      "I am an Informatics Engineering student and tech innovator driven by a clinical obsession with futuristic design and algorithmic efficiency.",
+      "My work lives at the intersection of highly polished frontend engineering and artificial intelligence...",
+    ],
     photoUrl: "/images/profile.jpg",
   },
   stats: [

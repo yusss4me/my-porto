@@ -8,6 +8,10 @@ import { ArrowRight, User } from "lucide-react";
 import TypewriterText from "@/components/atoms/TypewriterText";
 
 export default function AboutOverviewSection() {
+  const subtextStrings = Array.isArray(aboutData.hero.subtext)
+    ? aboutData.hero.subtext
+    : [aboutData.hero.subtext];
+
   const highlights = [
     {
       title: "Informatics Engineering Student",
@@ -28,15 +32,12 @@ export default function AboutOverviewSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Column: Information & Highlights */}
         <div>          
-          <span className="font-mono text-xs text-cyan-400 uppercase tracking-widest block mb-2 font-bold">
-            <TypewriterText text="TECH_STACK_MATRIX //" />
-          </span>
           <h2 className="font-geist text-2xl md:text-3xl lg:text-5xl font-bold text-white mt-1 mb-6">
             Building Digital Products & Exploring AI
           </h2>
           
-          <p className="font-inter text-[#c2c6d6] text-sm md:text-base leading-relaxed mb-8">
-            {aboutData.hero.subtext}
+          <p className="font-inter text-[#c2c6d6] text-sm md:text-base leading-relaxed mb-8 min-h-[4rem]">
+            <TypewriterText strings={subtextStrings} />
           </p>
 
           <div className="space-y-4 mb-8">
