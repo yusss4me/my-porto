@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import ProductCard, { ProductData } from '@/components/molecules/ProductCard';
 import SystemSpecsModal from '@/components/organisms/SystemSpecsModal';
 import Button from '@/components/atoms/Button';
+import TypewriterText from '@/components/atoms/TypewriterText';
 import { getProjects } from '@/src/lib/api';
 import { mapDjangoProjectToProductData } from '@/components/organisms/ClientStoreCatalog';
 
@@ -38,7 +39,7 @@ export default function ProjectGrid() {
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
         <div>
           <span className="font-mono text-xs text-[#3b82f6] tracking-widest uppercase font-bold block mb-2">
-            Selected Work
+            <TypewriterText text="FEATURED_PROJECTS //" />
           </span>
           <h2 className="font-geist text-2xl md:text-3xl lg:text-5xl font-bold text-white mt-1">
             Engineering Intelligent Interfaces.

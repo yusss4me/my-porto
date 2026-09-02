@@ -20,3 +20,5 @@ export * from "./TechTag";
 export * from "./TerminalBadge";
 export * from "./TerminalInput";
 export * from "./YearBadge";
+export { default as TypewriterText } from "./TypewriterText";
+

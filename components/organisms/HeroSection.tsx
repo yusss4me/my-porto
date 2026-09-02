@@ -6,16 +6,13 @@ import portfolioData from '@/data/portfolioData.json';
 import { heroData } from '@/data/heroData';
 import Badge from '@/components/atoms/Badge';
 import Button from '@/components/atoms/Button';
+import TypewriterText from '@/components/atoms/TypewriterText';
 
 export default function HeroSection() {
   const { profile, techStack } = portfolioData;
 
   return (
     <section id="home" className="py-16 md:py-24 flex flex-col justify-center">
-      <div className="inline-flex mb-3">
-        <Badge variant="green">{profile.status}</Badge>
-      </div>
-      
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -31,7 +28,15 @@ export default function HeroSection() {
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
         className="font-geist text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-[#adc6ff] max-w-3xl leading-snug mb-4"
       >
-        {profile.title}
+        I build{' '}
+        <TypewriterText
+          strings={[
+            'Full-Stack Web Applications',
+            'Machine Learning & AI Models',
+            'Next.js & Django Ecosystems',
+            'Interactive User Interfaces',
+          ]}
+        />
       </motion.h2>
       
       <p className="font-inter text-[#c2c6d6] text-base md:text-lg max-w-2xl mb-6 leading-relaxed">

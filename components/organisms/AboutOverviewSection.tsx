@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { aboutData } from "@/data/about";
 import { ArrowRight, User } from "lucide-react";
+import TypewriterText from "@/components/atoms/TypewriterText";
 
 export default function AboutOverviewSection() {
   const highlights = [
@@ -26,13 +27,11 @@ export default function AboutOverviewSection() {
     <section id="about-overview" className="py-16 md:py-24 border-t border-white/5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Column: Information & Highlights */}
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs font-semibold uppercase tracking-wider mb-3">
-            <User className="w-3.5 h-3.5" />
-            <span>ABOUT ME // OVERVIEW</span>
-          </div>
-          
-          <h2 className="font-geist text-2xl md:text-3xl lg:text-5xl font-bold text-white mt-2 mb-6">
+        <div>          
+          <span className="font-mono text-xs text-cyan-400 uppercase tracking-widest block mb-2 font-bold">
+            <TypewriterText text="TECH_STACK_MATRIX //" />
+          </span>
+          <h2 className="font-geist text-2xl md:text-3xl lg:text-5xl font-bold text-white mt-1 mb-6">
             Building Digital Products & Exploring AI
           </h2>
           

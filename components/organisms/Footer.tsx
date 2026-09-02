@@ -4,6 +4,7 @@ import React from 'react';
 import { usePathname } from 'next/navigation';
 import { footerData } from '@/data/footerData';
 import Button from '@/components/atoms/Button';
+import TypewriterText from '@/components/atoms/TypewriterText';
 import { Globe, Share2, Mail, Send, ArrowUpRight, MessageSquareCode } from 'lucide-react';
 
 export default function Footer() {
@@ -37,10 +38,6 @@ export default function Footer() {
         <div id="contact" className="mb-12">
           {/* Header Contact */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs font-semibold uppercase tracking-wider mb-4">
-              <MessageSquareCode className="w-3.5 h-3.5" />
-              <span>CONNECT // CONTACT & PLATFORMS</span>
-            </div>
             <h2 className="font-geist text-2xl md:text-3xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
               Let&apos;s build the <span className="italic text-[#3b82f6]">{footerData.headlineHighlight}</span> together.
             </h2>
@@ -90,7 +87,7 @@ export default function Footer() {
             {/* Transmission Form (Right) */}
             <div className="lg:col-span-5 p-6 md:p-8 rounded-2xl bg-[#0c1324]/80 border border-white/10 backdrop-blur-md shadow-2xl">
               <h3 className="font-mono text-xs text-cyan-400 uppercase tracking-widest mb-6">
-                // TRANSMIT_DIRECT_MESSAGE
+                <TypewriterText text="TRANSMIT_SIGNAL //" />
               </h3>
               <form onSubmit={handleSubmit} className="space-y-4 text-left">
                 <div>
